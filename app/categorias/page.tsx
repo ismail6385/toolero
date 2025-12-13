@@ -249,7 +249,7 @@ export default function CategoriasPage() {
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
             <Breadcrumb items={[{ name: 'Categorías', href: '/categorias' }]} />
-            
+
             <div className="text-center">
               <div className="inline-flex items-center px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wide mb-6">
                 <FontAwesomeIcon icon={faLayerGroup} className="mr-2" />
@@ -268,113 +268,114 @@ export default function CategoriasPage() {
           </div>
         </section>
 
-      {/* Categories Grid */}
-      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {categories.map((category, index) => (
-            <Link
-              key={index}
-              href={category.href}
-              className="group relative flex flex-col bg-surface rounded-2xl p-6 shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-2 hover:border-primary transition-all duration-300 overflow-hidden"
-            >
-              {/* Background Gradient */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${category.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+        {/* Categories Grid */}
+        <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {categories.map((category, index) => (
+              <Link
+                key={index}
+                href={category.href}
+                className="group relative flex flex-col bg-surface rounded-2xl p-6 shadow-md border border-gray-100 hover:shadow-xl hover:-translate-y-2 hover:border-primary transition-all duration-300 overflow-hidden"
+              >
+                {/* Background Gradient */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${category.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
 
-              {/* Content */}
-              <div className="relative z-10">
-                {/* Icon */}
-                <div className={`w-16 h-16 rounded-xl bg-background group-hover:bg-primary flex items-center justify-center ${category.color} group-hover:text-white transition-all duration-300 shadow-md mb-4`}>
-                  <FontAwesomeIcon icon={category.icon} className="text-2xl" />
-                </div>
+                {/* Content */}
+                <div className="relative z-10">
+                  {/* Icon */}
+                  <div className={`w-16 h-16 rounded-xl bg-background group-hover:bg-primary flex items-center justify-center ${category.color} group-hover:text-white transition-all duration-300 shadow-md mb-4`}>
+                    <FontAwesomeIcon icon={category.icon} className="text-2xl" />
+                  </div>
 
-                {/* Title */}
-                <h3 className="text-xl font-semibold text-text group-hover:text-primary transition-colors mb-2">
-                  {category.nameEs}
-                </h3>
-                <p className="text-sm text-text/50 mb-3 font-medium">
-                  {category.nameEn}
-                </p>
+                  {/* Title */}
+                  <h3 className="text-xl font-semibold text-text group-hover:text-primary transition-colors mb-2">
+                    {category.nameEs}
+                  </h3>
+                  <p className="text-sm text-text/50 mb-3 font-medium">
+                    {category.nameEn}
+                  </p>
 
-                {/* Description */}
-                <p className="text-sm text-text/60 leading-relaxed mb-4 line-clamp-2">
-                  {category.description}
-                </p>
+                  {/* Description */}
+                  <p className="text-sm text-text/60 leading-relaxed mb-4 line-clamp-2">
+                    {category.description}
+                  </p>
 
-                {/* Footer */}
-                <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100 group-hover:border-primary/20 transition-colors">
-                  <span className="text-xs font-semibold text-text/50 group-hover:text-primary transition-colors">
-                    {category.toolCount} herramientas
-                  </span>
-                  <div className="flex items-center text-sm font-semibold text-primary group-hover:text-secondary transition-colors">
-                    Explorar
-                    <FontAwesomeIcon icon={faArrowRight} className="ml-2 transform group-hover:translate-x-1 transition-transform" />
+                  {/* Footer */}
+                  <div className="flex items-center justify-between mt-auto pt-4 border-t border-gray-100 group-hover:border-primary/20 transition-colors">
+                    <span className="text-xs font-semibold text-text/50 group-hover:text-primary transition-colors">
+                      {category.toolCount} herramientas
+                    </span>
+                    <div className="flex items-center text-sm font-semibold text-primary group-hover:text-secondary transition-colors">
+                      Explorar
+                      <FontAwesomeIcon icon={faArrowRight} className="ml-2 transform group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
                 </div>
+
+                {/* Decorative Element */}
+                <div className="absolute -right-8 -top-8 w-24 h-24 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors pointer-events-none" />
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="w-full bg-surface border-t border-gray-100 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              <div>
+                <div className="text-4xl font-bold text-primary mb-2">13</div>
+                <div className="text-sm text-text/60 font-semibold">Categorías</div>
+                <div className="text-xs text-text/40 mt-1">Categories</div>
               </div>
-
-              {/* Decorative Element */}
-              <div className="absolute -right-8 -top-8 w-24 h-24 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors pointer-events-none" />
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="w-full bg-surface border-t border-gray-100 py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold text-primary mb-2">13</div>
-              <div className="text-sm text-text/60 font-semibold">Categorías</div>
-              <div className="text-xs text-text/40 mt-1">Categories</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-primary mb-2">138+</div>
-              <div className="text-sm text-text/60 font-semibold">Herramientas</div>
-              <div className="text-xs text-text/40 mt-1">Tools</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-primary mb-2">100%</div>
-              <div className="text-sm text-text/60 font-semibold">Gratuitas</div>
-              <div className="text-xs text-text/40 mt-1">Free</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-primary mb-2">0</div>
-              <div className="text-sm text-text/60 font-semibold">Registros</div>
-              <div className="text-xs text-text/40 mt-1">Sign-ups</div>
+              <div>
+                <div className="text-4xl font-bold text-primary mb-2">138+</div>
+                <div className="text-sm text-text/60 font-semibold">Herramientas</div>
+                <div className="text-xs text-text/40 mt-1">Tools</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-primary mb-2">100%</div>
+                <div className="text-sm text-text/60 font-semibold">Gratuitas</div>
+                <div className="text-xs text-text/40 mt-1">Free</div>
+              </div>
+              <div>
+                <div className="text-4xl font-bold text-primary mb-2">0</div>
+                <div className="text-sm text-text/60 font-semibold">Registros</div>
+                <div className="text-xs text-text/40 mt-1">Sign-ups</div>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="w-full bg-background py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-surface p-8 rounded-2xl shadow-lg border border-gray-100">
-            <h2 className="text-2xl md:text-3xl font-semibold text-text mb-4">
-              ¿No encuentras lo que buscas?
-            </h2>
-            <p className="text-text/60 mb-6 max-w-xl mx-auto">
-              Estamos constantemente añadiendo nuevas herramientas. Si tienes una sugerencia, no dudes en contactarnos.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/tools"
-                className="inline-flex justify-center items-center px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-secondary transition-all shadow-md"
-              >
-                Ver Todas las Herramientas
-              </Link>
-              <Link
-                href="#"
-                className="inline-flex justify-center items-center px-6 py-3 bg-surface text-text font-semibold rounded-xl border border-gray-200 hover:border-primary hover:text-primary transition-all"
-              >
-                Sugerir Herramienta
-              </Link>
+        {/* CTA Section */}
+        <section className="w-full bg-background py-16">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div className="bg-surface p-8 rounded-2xl shadow-lg border border-gray-100">
+              <h2 className="text-2xl md:text-3xl font-semibold text-text mb-4">
+                ¿No encuentras lo que buscas?
+              </h2>
+              <p className="text-text/60 mb-6 max-w-xl mx-auto">
+                Estamos constantemente añadiendo nuevas herramientas. Si tienes una sugerencia, no dudes en contactarnos.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/tools"
+                  className="inline-flex justify-center items-center px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-secondary transition-all shadow-md"
+                >
+                  Ver Todas las Herramientas
+                </Link>
+                <Link
+                  href="#"
+                  className="inline-flex justify-center items-center px-6 py-3 bg-surface text-text font-semibold rounded-xl border border-gray-200 hover:border-primary hover:text-primary transition-all"
+                >
+                  Sugerir Herramienta
+                </Link>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </>
   );
 }
 
