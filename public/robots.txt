@@ -1,0 +1,35 @@
+# robots.txt para Toolero.es
+# Permitir acceso a todos los bots de búsqueda
+
+User-agent: *
+Allow: /
+
+# Bloquear acceso a archivos y directorios privados
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Permitir acceso a recursos estáticos
+Allow: /_next/static/
+Allow: /_next/image/
+
+# Sitemap
+Sitemap: https://toolero.es/sitemap.xml
+Sitemap: https://www.toolero.es/sitemap.xml
+
+# Bots específicos
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Crawl-delay para bots agresivos
+User-agent: *
+Crawl-delay: 1
