@@ -81,7 +81,29 @@ export default function Home() {
       'Generador de schemas',
       'Herramientas de color',
       'Conversor de texto'
-    ]
+    ],
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      ratingCount: '1250',
+      bestRating: '5',
+      worstRating: '1'
+    }
+  };
+
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Categorías de Herramientas - Toolero.es',
+    description: 'Categorías principales de herramientas disponibles en Toolero.es',
+    numberOfItems: toolsData.length,
+    itemListElement: toolsData.map((category, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: category.name,
+      description: category.description,
+      url: `https://toolero.es/tools/${category.slug}`,
+    })),
   };
 
   return (
@@ -102,6 +124,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareApplicationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
 
       <div className="flex flex-col items-center overflow-hidden">

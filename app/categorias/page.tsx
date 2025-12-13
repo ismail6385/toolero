@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Breadcrumb from '@/components/Breadcrumb';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFont,
@@ -17,15 +18,30 @@ import {
   faShieldAlt,
   faVideo
 } from '@fortawesome/free-solid-svg-icons';
+import type { Metadata } from 'next';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Categorías de Herramientas - Toolero.es | Text, SEO, Image, PDF & More',
   description: 'Explora nuestras categorías de herramientas gratuitas: Herramientas de texto, SEO, imagen, PDF, utilidades, desarrollo, archivos y cálculo. Todo lo que necesitas en un solo lugar.',
-  keywords: 'categorías herramientas, herramientas texto, herramientas SEO, herramientas imagen, herramientas PDF, herramientas desarrollo, herramientas cálculo, toolero categorías',
+  keywords: [
+    'categorías herramientas',
+    'herramientas texto',
+    'herramientas SEO',
+    'herramientas imagen',
+    'herramientas PDF',
+    'herramientas desarrollo',
+    'herramientas cálculo',
+    'toolero categorías',
+    'herramientas online gratis'
+  ],
   openGraph: {
     title: 'Categorías de Herramientas - Toolero.es',
     description: 'Descubre todas nuestras categorías de herramientas gratuitas online',
     type: 'website',
+    url: 'https://toolero.es/categorias',
+  },
+  alternates: {
+    canonical: 'https://toolero.es/categorias',
   },
 };
 
@@ -188,18 +204,57 @@ export default function CategoriasPage() {
     }
   ];
 
-  return (
-    <div className="min-h-screen bg-background">
-      {/* Hero Section */}
-      <section className="relative w-full overflow-hidden bg-surface pb-16 pt-24 lg:pt-32">
-        <div className="absolute -top-24 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl mix-blend-multiply opacity-50" />
-        <div className="absolute top-0 -right-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl mix-blend-multiply opacity-50" />
+  // Generate CollectionPage Schema
+  const collectionPageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Categorías de Herramientas - Toolero.es',
+    description: 'Explora todas las categorías de herramientas gratuitas disponibles',
+    url: 'https://toolero.es/categorias',
+  };
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
-          <div className="inline-flex items-center px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wide mb-6">
-            <FontAwesomeIcon icon={faLayerGroup} className="mr-2" />
-            Todas las Categorías
-          </div>
+  // Generate ItemList Schema for categories
+  const itemListSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Categorías de Herramientas',
+    description: 'Lista de todas las categorías de herramientas disponibles',
+    numberOfItems: categories.length,
+    itemListElement: categories.map((category, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: category.nameEs,
+      description: category.description,
+      url: `https://toolero.es${category.href}`,
+    })),
+  };
+
+  return (
+    <>
+      {/* JSON-LD Schema Markup */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
+      />
+
+      <div className="min-h-screen bg-background">
+        {/* Hero Section */}
+        <section className="relative w-full overflow-hidden bg-surface pb-16 pt-24 lg:pt-32 border-b border-gray-200">
+          <div className="absolute -top-24 -left-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl mix-blend-multiply opacity-50" />
+          <div className="absolute top-0 -right-20 w-96 h-96 bg-secondary/10 rounded-full blur-3xl mix-blend-multiply opacity-50" />
+
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-10">
+            <Breadcrumb items={[{ name: 'Categorías', href: '/categorias' }]} />
+            
+            <div className="text-center">
+              <div className="inline-flex items-center px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wide mb-6">
+                <FontAwesomeIcon icon={faLayerGroup} className="mr-2" />
+                Todas las Categorías
+              </div>
           <h1 className="text-4xl md:text-6xl font-semibold text-text tracking-tight mb-6">
             Explora por <span className="text-primary">Categoría</span>
           </h1>

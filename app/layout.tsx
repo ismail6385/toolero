@@ -85,6 +85,13 @@ export const metadata: Metadata = {
       'es-ES': 'https://toolero.es',
     },
   },
+  other: {
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'default',
+    'apple-mobile-web-app-title': 'Toolero.es',
+    'mobile-web-app-capable': 'yes',
+    'theme-color': '#7129cc',
+  },
 };
 
 export default function RootLayout({
