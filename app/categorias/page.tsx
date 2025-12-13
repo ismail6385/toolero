@@ -255,17 +255,18 @@ export default function CategoriasPage() {
                 <FontAwesomeIcon icon={faLayerGroup} className="mr-2" />
                 Todas las Categorías
               </div>
-          <h1 className="text-4xl md:text-6xl font-semibold text-text tracking-tight mb-6">
-            Explora por <span className="text-primary">Categoría</span>
-          </h1>
-          <p className="mt-4 text-lg md:text-xl text-text/60 max-w-3xl mx-auto leading-relaxed">
-            Navega por nuestras herramientas organizadas por categorías. Encuentra exactamente lo que necesitas de forma rápida y sencilla.
-          </p>
-          <p className="mt-2 text-base md:text-lg text-text/50 max-w-3xl mx-auto">
-            Browse our tools organized by category. Find exactly what you need quickly and easily.
-          </p>
-        </div>
-      </section>
+              <h1 className="text-4xl md:text-6xl font-semibold text-text tracking-tight mb-6">
+                Explora por <span className="text-primary">Categoría</span>
+              </h1>
+              <p className="mt-4 text-lg md:text-xl text-text/60 max-w-3xl mx-auto leading-relaxed">
+                Navega por nuestras herramientas organizadas por categorías. Encuentra exactamente lo que necesitas de forma rápida y sencilla.
+              </p>
+              <p className="mt-2 text-base md:text-lg text-text/50 max-w-3xl mx-auto">
+                Browse our tools organized by category. Find exactly what you need quickly and easily.
+              </p>
+            </div>
+          </div>
+        </section>
 
       {/* Categories Grid */}
       <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
