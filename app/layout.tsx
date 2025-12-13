@@ -17,6 +17,9 @@ export const metadata: Metadata = {
   description: 'Descubre nuestra colección de herramientas online gratuitas: contador de palabras, edición de imágenes y más.',
   keywords: 'herramientas, online, gratis, contador palabras, redimensionar imagen, toolero',
   authors: [{ name: 'Toolero.es' }],
+  verification: {
+    google: 'g3tTxMCEjAZAs0D8NY8eInOXiy_dHnrkPUUmpyKC4T4',
+  },
 };
 
 export default function RootLayout({
