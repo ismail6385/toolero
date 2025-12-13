@@ -214,19 +214,21 @@ export default function CategoriasPage() {
   };
 
   // Generate ItemList Schema for categories
+  const listItems = categories.map((category, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: category.nameEs,
+    description: category.description,
+    url: `https://toolero.es${category.href}`,
+  }));
+
   const itemListSchema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Categorías de Herramientas',
     description: 'Lista de todas las categorías de herramientas disponibles',
     numberOfItems: categories.length,
-    itemListElement: categories.map((category, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: category.nameEs,
-      description: category.description,
-      url: `https://toolero.es${category.href}`,
-    })),
+    itemListElement: listItems,
   };
 
   return (
