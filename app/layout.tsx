@@ -100,7 +100,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es-ES">
+    <html lang="es-ES" suppressHydrationWarning>
       <body className={`${inter.className} min-h-screen flex flex-col bg-background`}>
         <Navbar />
         <main className="flex-grow">

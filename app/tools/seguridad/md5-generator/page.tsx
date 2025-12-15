@@ -2,138 +2,95 @@
 
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCopy, faCheck, faLock, faTrash } from '@fortawesome/free-solid-svg-icons';
+import {
+    faLock,
+    faCopy,
+    faCheckCircle
+} from '@fortawesome/free-solid-svg-icons';
 
-export default function MD5Generator() {
+export default function Md5Generator() {
     const [input, setInput] = useState('');
     const [hash, setHash] = useState('');
+    const [loading, setLoading] = useState(false);
     const [copied, setCopied] = useState(false);
 
-    const generateMD5 = async (text: string) => {
-        if (!text) {
-            setHash('');
-            return;
-        }
-
-        // MD5 no está disponible en Web Crypto API nativa del navegador
-        // Usamos una implementación simple de MD5
-        // Nota: Para producción, se recomienda usar una librería como crypto-js
-        
-        // Implementación básica de MD5 (simplificada)
-        // En producción real, usar: import CryptoJS from 'crypto-js'; CryptoJS.MD5(text).toString()
+    const generateHash = async (algo: 'SHA-1' | 'SHA-256' | 'SHA-512') => {
+        if (!input) return;
+        setLoading(true);
         try {
-            // Usando una función hash simple como alternativa
-            // Para una implementación real de MD5, se necesitaría una librería externa
-            const encoder = new TextEncoder();
-            const data = encoder.encode(text);
-            const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+            const msgBuffer = new TextEncoder().encode(input);
+            const hashBuffer = await crypto.subtle.digest(algo, msgBuffer);
             const hashArray = Array.from(new Uint8Array(hashBuffer));
             const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-            
-            // Generando un hash de 32 caracteres similar a MD5
-            // IMPORTANTE: Esta es una aproximación. Para MD5 real, instala crypto-js
-            setHash(hashHex.substring(0, 32));
-        } catch (error) {
-            setHash('Error al generar el hash');
+            setHash(hashHex);
+        } catch (e) {
+            console.error(e);
         }
+        setLoading(false);
     };
 
-    const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        const value = e.target.value;
-        setInput(value);
-        generateMD5(value);
-    };
-
-    const handleCopy = () => {
-        if (hash) {
-            navigator.clipboard.writeText(hash);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
-        }
-    };
-
-    const handleClear = () => {
-        setInput('');
-        setHash('');
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText(hash);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
     };
 
     return (
         <div className="max-w-4xl mx-auto px-4 py-12">
-            <div className="mb-8 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 text-primary mb-4">
-                    <FontAwesomeIcon icon={faLock} className="text-2xl" />
+            <div className="mb-10 text-center">
+                <div className="inline-flex items-center px-3 py-1 rounded-full border border-gray-500/20 bg-gray-500/5 text-gray-600 text-xs font-semibold uppercase tracking-wide mb-4">
+                    <FontAwesomeIcon icon={faLock} className="mr-2" />
+                    Criptografía
                 </div>
-                <h1 className="text-3xl md:text-4xl font-semibold text-text mb-2">Generador Hash MD5</h1>
+                <h1 className="text-3xl md:text-5xl font-semibold text-text mb-4">Generador Hash (SHA)</h1>
                 <p className="text-text/60 max-w-2xl mx-auto">
-                    Convierte cualquier texto a su huella digital MD5 de forma rápida y segura.
+                    Genera hashes seguros SHA-256, SHA-512 y SHA-1 directamente en tu navegador.
                 </p>
             </div>
 
-            <div className="bg-surface rounded-xl shadow-md border border-gray-200 p-6 mb-6">
+            <div className="bg-surface rounded-2xl shadow-lg border border-gray-100 p-8">
                 <div className="mb-6">
-                    <div className="flex items-center justify-between mb-2">
-                        <label className="block text-sm font-semibold text-text">Texto de Entrada</label>
-                        <button
-                            onClick={handleClear}
-                            className="flex items-center gap-2 text-sm text-text/60 hover:text-text transition-colors"
-                        >
-                            <FontAwesomeIcon icon={faTrash} />
-                            Limpiar
-                        </button>
-                    </div>
+                    <label className="text-sm font-semibold text-text mb-2 block">Texto a encriptar</label>
                     <textarea
                         value={input}
-                        onChange={handleInputChange}
-                        rows={6}
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-primary focus:border-primary transition-colors resize-none font-mono text-sm"
-                        placeholder="Escribe o pega el texto que deseas convertir a MD5..."
+                        onChange={(e) => { setInput(e.target.value); setHash(''); }}
+                        placeholder="Escribe algo aquí..."
+                        className="w-full h-32 px-4 py-3 rounded-xl border border-gray-200 outline-none focus:border-gray-500 resize-none font-sans"
                     />
                 </div>
 
+                <div className="flex flex-wrap gap-4 mb-8">
+                    <button onClick={() => generateHash('SHA-256')} className="px-6 py-2 bg-gray-900 text-white rounded-lg font-bold hover:bg-gray-800 transition-all">
+                        SHA-256
+                    </button>
+                    <button onClick={() => generateHash('SHA-512')} className="px-6 py-2 bg-gray-700 text-white rounded-lg font-bold hover:bg-gray-600 transition-all">
+                        SHA-512
+                    </button>
+                    <button onClick={() => generateHash('SHA-1')} className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg font-bold hover:bg-gray-300 transition-all">
+                        SHA-1
+                    </button>
+                </div>
+
                 {hash && (
-                    <div>
-                        <label className="block text-sm font-semibold text-text mb-2">Hash MD5:</label>
-                        <div className="bg-background rounded-xl p-4 border border-gray-200 mb-4">
-                            <div className="font-mono text-sm text-text break-all select-all">
+                    <div className="animate-fadeIn">
+                        <label className="text-xs font-bold text-text/50 uppercase block mb-2">Resultado Hash</label>
+                        <div className="relative bg-gray-50 rounded-xl border border-gray-200 p-4">
+                            <code className="text-sm font-mono text-text break-all block pr-12">
                                 {hash}
-                            </div>
+                            </code>
+                            <button
+                                onClick={copyToClipboard}
+                                className={`absolute top-1/2 -translate-y-1/2 right-2 p-2 rounded-lg text-xs font-bold transition-all ${copied
+                                        ? 'text-green-500 bg-green-50'
+                                        : 'text-text/40 hover:text-text hover:bg-gray-200'
+                                    }`}
+                            >
+                                <FontAwesomeIcon icon={copied ? faCheckCircle : faCopy} className="text-lg" />
+                            </button>
                         </div>
-                        <button
-                            onClick={handleCopy}
-                            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-primary hover:bg-secondary text-white font-semibold rounded-xl transition-colors shadow-md"
-                        >
-                            <FontAwesomeIcon icon={copied ? faCheck : faCopy} />
-                            {copied ? 'Copiado!' : 'Copiar Hash'}
-                        </button>
                     </div>
                 )}
-            </div>
-
-            <div className="bg-primary/5 rounded-xl p-6 border border-primary/20">
-                <h3 className="font-semibold text-text mb-3 flex items-center gap-2">
-                    <FontAwesomeIcon icon={faLock} className="text-primary" />
-                    Sobre MD5
-                </h3>
-                <div className="text-sm text-text/70 space-y-2">
-                    <p>
-                        <strong>MD5 (Message Digest Algorithm 5)</strong> es una función hash criptográfica que produce 
-                        un hash de 128 bits (32 caracteres hexadecimales).
-                    </p>
-                    <p>
-                        <strong>Nota de seguridad:</strong> MD5 se considera inseguro para aplicaciones criptográficas 
-                        debido a vulnerabilidades conocidas. Para mayor seguridad, considera usar SHA-256.
-                    </p>
-                    <p className="mt-2 p-3 bg-yellow-50 rounded-lg border border-yellow-200">
-                        <strong>⚠️ Nota técnica:</strong> MD5 no está disponible en la Web Crypto API del navegador. 
-                        Esta herramienta genera un hash similar. Para MD5 real, se requiere una librería externa como crypto-js.
-                    </p>
-                    <p>
-                        <strong>Uso común:</strong> Verificación de integridad de archivos, checksums, y como 
-                        identificador único de datos.
-                    </p>
-                </div>
             </div>
         </div>
     );
 }
-

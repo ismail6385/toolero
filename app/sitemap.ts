@@ -4,7 +4,6 @@ import { toolsData } from '@/data/tools';
 export default function sitemap(): MetadataRoute.Sitemap {
     const baseUrl = 'https://toolero.es';
 
-    // Homepage
     const routes: MetadataRoute.Sitemap = [
         {
             url: baseUrl,
@@ -23,6 +22,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
             lastModified: new Date(),
             changeFrequency: 'weekly',
             priority: 0.8,
+        },
+        // Extra category sections that no vienen de toolsData
+        {
+            url: `${baseUrl}/tools/utilidad`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.7,
+        },
+        {
+            url: `${baseUrl}/tools/archivos`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.7,
+        },
+        {
+            url: `${baseUrl}/tools/calculo`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.7,
         },
     ];
 

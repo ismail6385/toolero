@@ -120,7 +120,7 @@ export default function CategoriasPage() {
       icon: faCode,
       description: 'Herramientas para desarrolladores: validadores, formateadores, minificadores y más.',
       descriptionEn: 'Tools for developers: validators, formatters, minifiers and more.',
-      href: '/tools/desarrollo',
+      href: '/tools/dev',
       color: 'text-indigo-600',
       bgGradient: 'from-indigo-50 to-indigo-100',
       toolCount: 18
