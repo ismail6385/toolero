@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function Footer() {
     return (
         <footer className="bg-text text-white mt-auto border-t border-text/20">
@@ -5,8 +7,16 @@ export default function Footer() {
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <div className="col-span-1 md:col-span-2">
                         <div className="flex items-center gap-2 mb-4">
-                            <div className="w-6 h-6 rounded bg-primary flex items-center justify-center text-xs font-bold shadow-md">T</div>
-                            <span className="text-xl font-bold text-white">Toolero.es</span>
+                            <div className="relative w-24 h-24">
+                                <Image
+                                    src="/logo.png"
+                                    alt="Toolero Logo"
+                                    fill
+                                    className="object-contain"
+                                    sizes="96px"
+                                />
+                            </div>
+                            <span className="text-2xl font-bold text-white">Toolero</span>
                         </div>
                         <p className="text-white/70 text-sm max-w-sm leading-relaxed">
                             Plataforma todo-en-uno con herramientas gratuitas para desarrolladores, creadores y estudiantes.
@@ -36,7 +46,7 @@ export default function Footer() {
 
                 <div className="mt-12 border-t border-text/20 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p className="text-sm text-white/60">
-                        &copy; {new Date().getFullYear()} Toolero.es. Hecho con <span className="text-secondary">♥</span> en España.
+                        &copy; {new Date().getFullYear()} Toolero. Hecho con <span className="text-secondary">♥</span> en España.
                     </p>
                     <div className="flex space-x-6">
                         {/* Social icons could go here */}
