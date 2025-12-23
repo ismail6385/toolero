@@ -211,6 +211,90 @@ export default function TextFormatterClient() {
                     </div>
                 </div>
             </div>
+
+            {/* SEO Content Section */}
+            <div className="mt-16 space-y-12">
+                {/* Features Section */}
+                <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    <h2 className="text-3xl font-bold text-text mb-6">Formateador de Texto: Limpia y Organiza Tus Textos</h2>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        <div className="text-center">
+                            <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">🧹</div>
+                            <h3 className="font-semibold text-text mb-2">Limpieza Automática</h3>
+                            <p className="text-sm text-text/70">Elimina HTML, normaliza espacios y corrige puntuación al instante.</p>
+                        </div>
+                        <div className="text-center">
+                            <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-3">⚡</div>
+                            <h3 className="font-semibold text-text mb-2">Rápido y Fácil</h3>
+                            <p className="text-sm text-text/70">Formatea textos largos en segundos con un solo clic.</p>
+                        </div>
+                        <div className="text-center">
+                            <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-3">✓</div>
+                            <h3 className="font-semibold text-text mb-2">100% Gratis</h3>
+                            <p className="text-sm text-text/70">Sin límites, sin registro, sin costos ocultos.</p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Use Cases */}
+                <section className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 border border-gray-200">
+                    <h2 className="text-3xl font-bold text-text mb-6">¿Para qué usar el formateador de texto?</h2>
+                    <div className="grid md:grid-cols-2 gap-4">
+                        <div className="bg-white rounded-lg p-4">
+                            <h3 className="font-semibold text-text mb-2">📝 Limpiar Contenido Web</h3>
+                            <p className="text-sm text-text/70">Elimina etiquetas HTML al copiar texto de páginas web.</p>
+                        </div>
+                        <div className="bg-white rounded-lg p-4">
+                            <h3 className="font-semibold text-text mb-2">📄 Preparar Documentos</h3>
+                            <p className="text-sm text-text/70">Normaliza espacios y corrige formato antes de publicar.</p>
+                        </div>
+                        <div className="bg-white rounded-lg p-4">
+                            <h3 className="font-semibold text-text mb-2">✉️ Emails Profesionales</h3>
+                            <p className="text-sm text-text/70">Da formato profesional a tus correos y mensajes.</p>
+                        </div>
+                        <div className="bg-white rounded-lg p-4">
+                            <h3 className="font-semibold text-text mb-2">📋 Listas y Datos</h3>
+                            <p className="text-sm text-text/70">Organiza listas y elimina formato no deseado.</p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* FAQ */}
+                <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    <h2 className="text-3xl font-bold text-text mb-6">Preguntas Frecuentes</h2>
+                    <div className="space-y-4">
+                        <div>
+                            <h3 className="font-semibold text-text mb-2">¿Cómo elimino HTML de un texto?</h3>
+                            <p className="text-text/70">Usa la opción "Eliminar HTML" para quitar todas las etiquetas y dejar solo el texto limpio.</p>
+                        </div>
+                        <div>
+                            <h3 className="font-semibold text-text mb-2">¿Puedo normalizar espacios múltiples?</h3>
+                            <p className="text-text/70">Sí, la opción "Normalizar Espacios" convierte múltiples espacios y tabs en un solo espacio.</p>
+                        </div>
+                        <div>
+                            <h3 className="font-semibold text-text mb-2">¿Es gratis formatear texto?</h3>
+                            <p className="text-text/70">Completamente gratis, sin límites de uso ni necesidad de registro.</p>
+                        </div>
+                        <div>
+                            <h3 className="font-semibold text-text mb-2">¿Se guarda mi texto en el servidor?</h3>
+                            <p className="text-text/70">No, todo el procesamiento se hace en tu navegador. Tu texto nunca se envía a ningún servidor.</p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Additional Info */}
+                <section className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+                    <h2 className="text-3xl font-bold text-text mb-4">Herramienta para Formatear y Limpiar Texto Online</h2>
+                    <div className="prose prose-sm max-w-none text-text/70 space-y-3">
+                        <p>
+                            Nuestro <strong>formateador de texto</strong> te permite <strong>limpiar texto online</strong> de forma rápida y eficiente. Ya sea que necesites <strong>eliminar HTML</strong>, <strong>corregir puntuación</strong> o <strong>normalizar espacios</strong>, nuestra herramienta gratuita te ofrece todas las opciones que necesitas.
+                        </p>
+                        <p>
+                            Con nuestro <strong>formateador de texto online</strong>, puedes <strong>formatear texto</strong> copiado de páginas web, documentos o cualquier fuente. Es perfecto para escritores, bloggers y profesionales que necesitan <strong>limpiar formato de texto</strong> rápidamente antes de publicar o compartir contenido.
+                        </p>
+                    </div>
+                </section>
+            </div>
         </div>
     );
 }

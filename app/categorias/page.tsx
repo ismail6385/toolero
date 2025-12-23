@@ -16,7 +16,8 @@ import {
   faHashtag,
   faPalette,
   faShieldAlt,
-  faVideo
+  faVideo,
+  faCouch
 } from '@fortawesome/free-solid-svg-icons';
 import type { Metadata } from 'next';
 
@@ -59,6 +60,28 @@ interface Category {
 
 export default function CategoriasPage() {
   const categories: Category[] = [
+    {
+      nameEn: 'Furniture',
+      nameEs: 'Muebles y Decoración',
+      icon: faCouch,
+      description: 'Calculadoras de medidas para sofás, camas, mesas y más. Optimiza la distribución de tu hogar.',
+      descriptionEn: 'Measurement calculators for sofas, beds, tables and more. Optimize your home layout.',
+      href: '/tools/muebles',
+      color: 'text-amber-600',
+      bgGradient: 'from-amber-50 to-amber-100',
+      toolCount: 20
+    },
+    {
+      nameEn: 'Education',
+      nameEs: 'Educación',
+      icon: faFolder, // Fallback to Folder or add faGraduationCap
+      description: 'Herramientas para estudiantes: flashcards, calculadoras de notas y generadores de citas.',
+      descriptionEn: 'Tools for students: flashcards, grade calculators and citation generators.',
+      href: '/tools/educacion',
+      color: 'text-indigo-600',
+      bgGradient: 'from-indigo-50 to-indigo-100',
+      toolCount: 5
+    },
     {
       nameEn: 'Text Tools',
       nameEs: 'Herramientas de texto',

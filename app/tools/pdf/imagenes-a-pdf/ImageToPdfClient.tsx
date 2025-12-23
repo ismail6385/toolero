@@ -221,6 +221,197 @@ export default function ImageToPdfClient() {
                     🔒 <strong>Totalmente Privado:</strong> La conversión se realiza en tu dispositivo. Tus imágenes no se envían a Internet.
                 </p>
             </div>
+
+            {/* SEO Content Section */}
+            <div className="mt-16 space-y-12">
+                {/* Features Section */}
+                <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    <h2 className="text-3xl font-bold text-text mb-6">¿Por qué convertir imágenes a PDF con nuestra herramienta?</h2>
+                    <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-4">
+                            <div className="flex items-start gap-3">
+                                <div className="w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</div>
+                                <div>
+                                    <h3 className="font-semibold text-text mb-1">Conversión Rápida y Gratuita</h3>
+                                    <p className="text-sm text-text/70">Convierte todas tus fotos e imágenes a PDF sin pagar. Sin límites de archivos ni restricciones.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-3">
+                                <div className="w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</div>
+                                <div>
+                                    <h3 className="font-semibold text-text mb-1">Múltiples Formatos Soportados</h3>
+                                    <p className="text-sm text-text/70">Compatible con JPG, JPEG y PNG. Convierte cualquier imagen a documento PDF profesional.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-3">
+                                <div className="w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</div>
+                                <div>
+                                    <h3 className="font-semibold text-text mb-1">100% Privado y Seguro</h3>
+                                    <p className="text-sm text-text/70">Tus imágenes se procesan localmente en tu navegador. Nunca se suben a servidores externos.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="space-y-4">
+                            <div className="flex items-start gap-3">
+                                <div className="w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</div>
+                                <div>
+                                    <h3 className="font-semibold text-text mb-1">Sin Marcas de Agua</h3>
+                                    <p className="text-sm text-text/70">Crea PDFs limpios y profesionales sin logos ni marcas de agua molestas.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-3">
+                                <div className="w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</div>
+                                <div>
+                                    <h3 className="font-semibold text-text mb-1">Calidad Original Preservada</h3>
+                                    <p className="text-sm text-text/70">Mantiene la resolución y calidad original de tus imágenes en el PDF final.</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-3">
+                                <div className="w-8 h-8 bg-green-100 text-green-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">✓</div>
+                                <div>
+                                    <h3 className="font-semibold text-text mb-1">Funciona en Todos los Dispositivos</h3>
+                                    <p className="text-sm text-text/70">Usa desde PC, Mac, móvil o tablet. Solo necesitas un navegador web moderno.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* How to Use Section */}
+                <section className="bg-gradient-to-br from-red-50 to-orange-50 rounded-2xl p-8 border border-red-100">
+                    <h2 className="text-3xl font-bold text-text mb-6">Cómo convertir imágenes a PDF en 3 pasos</h2>
+                    <div className="space-y-6">
+                        <div className="flex items-start gap-4">
+                            <div className="w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">1</div>
+                            <div>
+                                <h3 className="font-semibold text-text text-lg mb-2">Selecciona tus imágenes</h3>
+                                <p className="text-text/70">Haz clic en el área de carga o arrastra tus fotos JPG o PNG. Puedes seleccionar múltiples imágenes a la vez.</p>
+                            </div>
+                        </div>
+                        <div className="flex items-start gap-4">
+                            <div className="w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">2</div>
+                            <div>
+                                <h3 className="font-semibold text-text text-lg mb-2">Organiza el orden (opcional)</h3>
+                                <p className="text-text/70">Las imágenes aparecerán en el PDF en el orden que las seleccionaste. Puedes eliminar las que no necesites.</p>
+                            </div>
+                        </div>
+                        <div className="flex items-start gap-4">
+                            <div className="w-12 h-12 bg-red-600 text-white rounded-full flex items-center justify-center font-bold text-xl flex-shrink-0">3</div>
+                            <div>
+                                <h3 className="font-semibold text-text text-lg mb-2">Descarga tu PDF</h3>
+                                <p className="text-text/70">Haz clic en "Convertir a PDF" y tu documento se creará y descargará automáticamente a tu dispositivo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Use Cases Section */}
+                <section className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-2xl p-8 border border-purple-100">
+                    <h2 className="text-3xl font-bold text-text mb-6">Casos de uso para convertir imágenes a PDF</h2>
+                    <div className="grid md:grid-cols-2 gap-4">
+                        <div className="bg-white/80 rounded-lg p-4 border border-purple-100">
+                            <h3 className="font-semibold text-text mb-2">📄 Documentos Escaneados</h3>
+                            <p className="text-sm text-text/70">Convierte fotos de documentos, recibos o facturas en PDFs organizados.</p>
+                        </div>
+                        <div className="bg-white/80 rounded-lg p-4 border border-purple-100">
+                            <h3 className="font-semibold text-text mb-2">📚 Presentaciones</h3>
+                            <p className="text-sm text-text/70">Crea presentaciones profesionales combinando múltiples imágenes en un solo PDF.</p>
+                        </div>
+                        <div className="bg-white/80 rounded-lg p-4 border border-purple-100">
+                            <h3 className="font-semibold text-text mb-2">🎨 Portfolios</h3>
+                            <p className="text-sm text-text/70">Comparte tu trabajo creativo en formato PDF fácil de enviar y visualizar.</p>
+                        </div>
+                        <div className="bg-white/80 rounded-lg p-4 border border-purple-100">
+                            <h3 className="font-semibold text-text mb-2">📱 Capturas de Pantalla</h3>
+                            <p className="text-sm text-text/70">Agrupa capturas de pantalla en un documento PDF para reportes o tutoriales.</p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* FAQ Section */}
+                <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    <h2 className="text-3xl font-bold text-text mb-8">Preguntas Frecuentes</h2>
+                    <div className="space-y-6">
+                        <div className="border-b border-gray-100 pb-6">
+                            <h3 className="font-semibold text-text text-lg mb-2">¿Es gratis convertir imágenes a PDF?</h3>
+                            <p className="text-text/70">Sí, nuestra herramienta es 100% gratuita. No hay costos ocultos, límites de archivos ni necesidad de registro.</p>
+                        </div>
+                        <div className="border-b border-gray-100 pb-6">
+                            <h3 className="font-semibold text-text text-lg mb-2">¿Qué formatos de imagen puedo convertir?</h3>
+                            <p className="text-text/70">Actualmente soportamos JPG, JPEG y PNG. Estos son los formatos de imagen más comunes y cubren la mayoría de necesidades.</p>
+                        </div>
+                        <div className="border-b border-gray-100 pb-6">
+                            <h3 className="font-semibold text-text text-lg mb-2">¿Cuántas imágenes puedo convertir a la vez?</h3>
+                            <p className="text-text/70">No hay límite. Puedes seleccionar y convertir tantas imágenes como necesites en un solo PDF.</p>
+                        </div>
+                        <div className="border-b border-gray-100 pb-6">
+                            <h3 className="font-semibold text-text text-lg mb-2">¿Mis imágenes están seguras?</h3>
+                            <p className="text-text/70">Absolutamente. La conversión se realiza completamente en tu navegador. Tus imágenes nunca se suben a Internet ni a nuestros servidores.</p>
+                        </div>
+                        <div className="border-b border-gray-100 pb-6">
+                            <h3 className="font-semibold text-text text-lg mb-2">¿Se pierde calidad al convertir a PDF?</h3>
+                            <p className="text-text/70">No, mantenemos la calidad y resolución original de tus imágenes. El PDF resultante preserva todos los detalles.</p>
+                        </div>
+                        <div className="border-b border-gray-100 pb-6">
+                            <h3 className="font-semibold text-text text-lg mb-2">¿Funciona en móviles?</h3>
+                            <p className="text-text/70">Sí, puedes convertir imágenes a PDF desde cualquier dispositivo móvil con un navegador web moderno.</p>
+                        </div>
+                        <div className="pb-6">
+                            <h3 className="font-semibold text-text text-lg mb-2">¿Puedo cambiar el orden de las imágenes?</h3>
+                            <p className="text-text/70">Las imágenes se añaden al PDF en el orden que las seleccionas. Si necesitas cambiar el orden, simplemente elimina y vuelve a agregar las imágenes en el orden deseado.</p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Additional Info Section */}
+                <section className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+                    <h2 className="text-3xl font-bold text-text mb-4">Convertidor de Imágenes a PDF Online</h2>
+                    <div className="prose prose-sm max-w-none text-text/70 space-y-4">
+                        <p>
+                            Cuando necesitas <strong>convertir imágenes a PDF</strong>, nuestra herramienta online es la solución perfecta. Ya sea que necesites <strong>convertir JPG a PDF</strong>, <strong>PNG a PDF</strong> o cualquier otro formato de imagen, nuestro <strong>convertidor de imágenes a PDF</strong> te permite hacerlo de forma rápida, segura y completamente gratuita.
+                        </p>
+                        <p>
+                            A diferencia de otras herramientas que requieren subir tus fotos a servidores externos, nuestra aplicación procesa todo localmente en tu navegador. Esto significa que cuando usas nuestra herramienta para <strong>convertir fotos a PDF</strong>, tus imágenes nunca salen de tu dispositivo, garantizando la máxima privacidad y seguridad de tus archivos personales.
+                        </p>
+                        <p>
+                            Ya sea que necesites <strong>crear PDF de imágenes</strong> para trabajo, estudios, presentaciones o uso personal, nuestra herramienta te ofrece una experiencia sin complicaciones. Sin límites de tamaño, sin marcas de agua, sin registro y sin costos ocultos. Simplemente selecciona tus imágenes, organízalas si es necesario, y descarga tu PDF en segundos.
+                        </p>
+                        <p>
+                            Nuestra herramienta para <strong>pasar imágenes a PDF</strong> es compatible con todos los navegadores modernos y dispositivos, permitiéndote <strong>transformar imágenes a PDF</strong> desde cualquier lugar y en cualquier momento. La interfaz intuitiva hace que el proceso sea tan simple que cualquiera puede usarla, sin necesidad de conocimientos técnicos o software especializado.
+                        </p>
+                        <p>
+                            Además, al <strong>hacer PDF con imágenes</strong> usando nuestra herramienta, mantienes la calidad original de tus fotos. No hay compresión agresiva ni pérdida de resolución. El resultado es un documento PDF profesional que preserva todos los detalles de tus imágenes originales, perfecto para compartir, archivar o imprimir.
+                        </p>
+                    </div>
+                </section>
+
+                {/* Benefits Section */}
+                <section className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-8 border border-blue-100">
+                    <h2 className="text-3xl font-bold text-text mb-6">Ventajas de convertir imágenes a PDF</h2>
+                    <div className="space-y-3">
+                        <div className="flex items-start gap-3">
+                            <span className="text-blue-600 font-bold">•</span>
+                            <p className="text-text/70"><strong>Fácil de compartir:</strong> Los PDFs son universalmente compatibles y fáciles de enviar por email o mensajería.</p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                            <span className="text-blue-600 font-bold">•</span>
+                            <p className="text-text/70"><strong>Tamaño reducido:</strong> Combinar múltiples imágenes en un PDF suele ocupar menos espacio que archivos individuales.</p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                            <span className="text-blue-600 font-bold">•</span>
+                            <p className="text-text/70"><strong>Mejor organización:</strong> Mantén todas tus imágenes relacionadas en un solo documento ordenado.</p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                            <span className="text-blue-600 font-bold">•</span>
+                            <p className="text-text/70"><strong>Profesionalismo:</strong> Los PDFs se ven más profesionales para presentaciones y documentos oficiales.</p>
+                        </div>
+                        <div className="flex items-start gap-3">
+                            <span className="text-blue-600 font-bold">•</span>
+                            <p className="text-text/70"><strong>Protección:</strong> Los PDFs son más difíciles de editar accidentalmente que las imágenes sueltas.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
     );
 }

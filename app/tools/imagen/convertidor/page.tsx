@@ -1,133 +1,110 @@
-'use client';
 
-import { useState, useRef } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloudUploadAlt, faExchangeAlt, faDownload, faSync, faImage } from '@fortawesome/free-solid-svg-icons';
+import type { Metadata } from 'next';
+import ImageConverterClient from './ImageConverterClient';
 
-export default function ImageConverter() {
-    const [image, setImage] = useState<string | null>(null);
-    const [format, setFormat] = useState('png'); // png, jpeg, webp
-    const [originalSpec, setOriginalSpec] = useState({ name: '', size: 0, type: '' });
+export const metadata: Metadata = {
+    title: 'Convertidor de Imágenes Gratis - JPG a PNG, PNG a JPG Online',
+    description: 'Convierte imágenes entre JPG, PNG, WebP gratis. Convertidor de formatos rápido y fácil. Sin pérdida de calidad. 100% gratuito.',
+    keywords: [
+        'convertir imagen',
+        'convertidor de imagenes',
+        'jpg a png',
+        'png a jpg',
+        'convertir jpg a png',
+        'convertir png a jpg',
+        'cambiar formato imagen',
+        'convertir formato foto',
+        'image converter',
+        'convertir webp',
+        'jpg to png',
+        'png to jpg',
+        'convertidor imagenes gratis',
+        'toolero'
+    ],
+};
 
-    const fileInputRef = useRef<HTMLInputElement>(null);
-    const canvasRef = useRef<HTMLCanvasElement>(null);
-
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const file = e.target.files?.[0];
-        if (file) {
-            setOriginalSpec({ name: file.name, size: file.size, type: file.type });
-            const reader = new FileReader();
-            reader.onload = (event) => {
-                setImage(event.target?.result as string);
-            };
-            reader.readAsDataURL(file);
-        }
-    };
-
-    const convertAndDownload = () => {
-        if (!image || !canvasRef.current) return;
-
-        const canvas = canvasRef.current;
-        const ctx = canvas.getContext('2d');
-        const img = new Image();
-        img.onload = () => {
-            canvas.width = img.width;
-            canvas.height = img.height;
-            if (ctx) {
-                // Determine background fill (JPEG doesn't support transparency)
-                if (format === 'jpeg') {
-                    ctx.fillStyle = '#FFFFFF';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
-                }
-                ctx.drawImage(img, 0, 0);
-
-                const mimeType = `image/${format}`;
-                const dataUrl = canvas.toDataURL(mimeType, 0.9); // 90% quality default
-
-                const link = document.createElement('a');
-                const newName = originalSpec.name.split('.')[0] + `-converted.${format}`;
-                link.download = newName;
-                link.href = dataUrl;
-                link.click();
-            }
-        };
-        img.src = image;
-    };
-
+export default function ConvertidorImagenPage() {
     return (
-        <div className="max-w-4xl mx-auto px-4 py-12">
-            <div className="mb-8 text-center">
-                <div className="inline-flex items-center px-3 py-1 rounded-full border border-pink-500/20 bg-pink-500/5 text-pink-600 text-xs font-semibold uppercase tracking-wide mb-4">
-                    <FontAwesomeIcon icon={faExchangeAlt} className="mr-2" />
-                    Conversor
-                </div>
-                <h1 className="text-3xl font-semibold text-text mb-2">Convertidor de Imagen</h1>
-                <p className="text-text/60">Convierte entre formatos PNG, JPG y WEBP instantáneamente.</p>
-            </div>
+        <>
+            <ImageConverterClient />
 
-            {!image ? (
-                <div
-                    onClick={() => fileInputRef.current?.click()}
-                    className="bg-surface rounded-xl shadow-md border border-gray-200 overflow-hidden text-center p-12 cursor-pointer hover:border-pink-500 transition-all group"
-                >
-                    <input
-                        ref={fileInputRef}
-                        type="file"
-                        accept="image/*"
-                        className="hidden"
-                        onChange={handleFileChange}
-                    />
-                    <div className="mx-auto h-20 w-20 bg-pink-50 rounded-full flex items-center justify-center text-pink-500 mb-6 group-hover:scale-110 transition-transform">
-                        <FontAwesomeIcon icon={faCloudUploadAlt} className="text-3xl" />
-                    </div>
-                    <h3 className="text-lg font-semibold text-text mb-2">Sube tu imagen</h3>
-                    <p className="text-sm text-text/60">Cualquier formato de imagen</p>
-                </div>
-            ) : (
-                <div className="bg-surface rounded-xl shadow-lg border border-gray-100 p-8 max-w-2xl mx-auto">
-                    <div className="flex items-center gap-4 mb-6 pb-6 border-b border-gray-100">
-                        <img src={image} className="w-16 h-16 object-cover rounded-lg shadow-sm bg-gray-50" alt="Thumb" />
-                        <div className="flex-1 min-w-0">
-                            <h3 className="font-semibold text-text truncate">{originalSpec.name}</h3>
-                            <p className="text-xs text-text/50">{(originalSpec.size / 1024).toFixed(1)} KB • {originalSpec.type}</p>
-                        </div>
-                        <button
-                            onClick={() => setImage(null)}
-                            className="text-gray-400 hover:text-red-500 transition-colors"
-                        >
-                            <FontAwesomeIcon icon={faSync} />
-                        </button>
-                    </div>
+            <article className="max-w-4xl mx-auto px-4 py-12 prose prose-slate">
+                <section className="mb-12">
+                    <h2 className="text-3xl font-bold text-gray-800 mb-6">Convertidor de Formatos de Imagen Online</h2>
+                    <p className="text-gray-600 mb-4">
+                        Nuestra herramienta de conversión de imágenes te permite cambiar el formato de tus archivos visuales en segundos.
+                        Transforma JPG a PNG para obtener transparencias, o PNG a JPG para reducir el tamaño, e incluso a WebP para la web moderna.
+                        Todo el proceso se realiza localmente en tu navegador.
+                    </p>
+                </section>
 
+                <section className="grid md:grid-cols-3 gap-8 mb-12">
+                    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 className="text-xl font-semibold text-pink-600 mb-3">Conversión Rápida</h3>
+                        <p className="text-gray-600">
+                            Cambia de formato instantáneamente sin esperas de carga o descarga del servidor.
+                        </p>
+                    </div>
+                    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 className="text-xl font-semibold text-pink-600 mb-3">Sin Pérdida de Calidad</h3>
+                        <p className="text-gray-600">
+                            Algoritmos de conversión que mantienen la fidelidad visual de tus imágenes originales.
+                        </p>
+                    </div>
+                    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                        <h3 className="text-xl font-semibold text-pink-600 mb-3">Múltiples Formatos</h3>
+                        <p className="text-gray-600">
+                            Soporte completo para los formatos más utilizados en la web: JPG, PNG y WebP.
+                        </p>
+                    </div>
+                </section>
+
+                <section className="mb-12">
+                    <h2 className="text-2xl font-bold text-gray-800 mb-6">¿Para qué sirve este convertidor?</h2>
+                    <ul className="grid md:grid-cols-2 gap-4">
+                        <li className="flex items-start gap-3">
+                            <span className="text-pink-500 font-bold">✓</span>
+                            <span className="text-gray-600">Optimización de imágenes para sitios web (WebP)</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <span className="text-pink-500 font-bold">✓</span>
+                            <span className="text-gray-600">Asegurar compatibilidad en diferentes dispositivos</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <span className="text-pink-500 font-bold">✓</span>
+                            <span className="text-gray-600">Conversión de capturas de pantalla a formatos editables</span>
+                        </li>
+                        <li className="flex items-start gap-3">
+                            <span className="text-pink-500 font-bold">✓</span>
+                            <span className="text-gray-600">Preparación de archivos para impresión o diseño</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section className="bg-gray-50 p-8 rounded-2xl">
+                    <h2 className="text-2xl font-bold text-gray-800 mb-6">Preguntas Frecuentes</h2>
                     <div className="space-y-6">
                         <div>
-                            <label className="text-xs font-bold text-text/50 uppercase block mb-2">Formato de Destino</label>
-                            <div className="grid grid-cols-3 gap-3">
-                                {['png', 'jpeg', 'webp'].map(fmt => (
-                                    <button
-                                        key={fmt}
-                                        onClick={() => setFormat(fmt)}
-                                        className={`py-3 rounded-xl border font-bold uppercase text-sm transition-all ${format === fmt
-                                                ? 'bg-pink-600 border-pink-600 text-white shadow-md'
-                                                : 'border-gray-200 text-text/60 hover:border-pink-300'
-                                            }`}
-                                    >
-                                        {fmt === 'jpeg' ? 'JPG' : fmt}
-                                    </button>
-                                ))}
-                            </div>
+                            <h3 className="font-semibold text-gray-800 mb-2">¿Qué formatos soporta?</h3>
+                            <p className="text-gray-600">
+                                Actualmente soportamos conversiones de ida y vuelta entre JPG (JPEG), PNG y WebP.
+                            </p>
                         </div>
-
-                        <button
-                            onClick={convertAndDownload}
-                            className="w-full py-4 bg-gray-900 hover:bg-black text-white font-bold rounded-xl transition-all shadow-md flex items-center justify-center gap-2"
-                        >
-                            <FontAwesomeIcon icon={faDownload} /> Convertir y Descargar
-                        </button>
+                        <div>
+                            <h3 className="font-semibold text-gray-800 mb-2">¿Se pierde calidad al convertir?</h3>
+                            <p className="text-gray-600">
+                                En general no. Sin embargo, convertir de un formato sin pérdida (como PNG) a uno con compresión (como JPG) puede implicar una mínima diferencia, usualmente imperceptible.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 className="font-semibold text-gray-800 mb-2">¿Es gratis usar este convertidor?</h3>
+                            <p className="text-gray-600">
+                                Sí, es totalmente gratuito y puedes usarlo tantas veces como necesites sin límites.
+                            </p>
+                        </div>
                     </div>
-                </div>
-            )}
-            <canvas ref={canvasRef} className="hidden" />
-        </div>
+                </section>
+            </article>
+        </>
     );
 }

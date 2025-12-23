@@ -206,6 +206,90 @@ export default function QrGeneratorClient() {
                 </div>
 
             </div>
+
+            {/* SEO Content Section */}
+            <div className="mt-16 space-y-12">
+                {/* Features Section */}
+                <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    <h2 className="text-3xl font-bold text-text mb-6">Generador de Códigos QR: Rápido, Gratis y Personalizable</h2>
+                    <div className="grid md:grid-cols-3 gap-6">
+                        <div className="text-center">
+                            <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-3">✓</div>
+                            <h3 className="font-semibold text-text mb-2">100% Gratis</h3>
+                            <p className="text-sm text-text/70">Crea códigos QR ilimitados sin pagar ni registrarte.</p>
+                        </div>
+                        <div className="text-center">
+                            <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">🎨</div>
+                            <h3 className="font-semibold text-text mb-2">Personalizable</h3>
+                            <p className="text-sm text-text/70">Cambia colores y tamaño para que combine con tu marca.</p>
+                        </div>
+                        <div className="text-center">
+                            <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto mb-3">📱</div>
+                            <h3 className="font-semibold text-text mb-2">Múltiples Tipos</h3>
+                            <p className="text-sm text-text/70">URLs, WiFi, texto, email y más opciones disponibles.</p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Use Cases */}
+                <section className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 border border-gray-200">
+                    <h2 className="text-3xl font-bold text-text mb-6">¿Para qué usar códigos QR?</h2>
+                    <div className="grid md:grid-cols-2 gap-4">
+                        <div className="bg-white rounded-lg p-4">
+                            <h3 className="font-semibold text-text mb-2">🌐 Compartir URLs</h3>
+                            <p className="text-sm text-text/70">Dirige a clientes a tu sitio web, redes sociales o tienda online.</p>
+                        </div>
+                        <div className="bg-white rounded-lg p-4">
+                            <h3 className="font-semibold text-text mb-2">📶 WiFi Rápido</h3>
+                            <p className="text-sm text-text/70">Permite que visitantes se conecten a tu WiFi sin escribir contraseñas.</p>
+                        </div>
+                        <div className="bg-white rounded-lg p-4">
+                            <h3 className="font-semibold text-text mb-2">📧 Contacto Fácil</h3>
+                            <p className="text-sm text-text/70">Genera QR con tu email para que te contacten al instante.</p>
+                        </div>
+                        <div className="bg-white rounded-lg p-4">
+                            <h3 className="font-semibold text-text mb-2">📄 Menús Digitales</h3>
+                            <p className="text-sm text-text/70">Perfecto para restaurantes, cafeterías y negocios.</p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* FAQ */}
+                <section className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
+                    <h2 className="text-3xl font-bold text-text mb-6">Preguntas Frecuentes</h2>
+                    <div className="space-y-4">
+                        <div>
+                            <h3 className="font-semibold text-text mb-2">¿Es gratis generar códigos QR?</h3>
+                            <p className="text-text/70">Sí, puedes crear todos los códigos QR que necesites sin costo alguno.</p>
+                        </div>
+                        <div>
+                            <h3 className="font-semibold text-text mb-2">¿Cómo creo un QR para WiFi?</h3>
+                            <p className="text-text/70">Selecciona "WiFi", ingresa el nombre de tu red y contraseña, y descarga el QR generado.</p>
+                        </div>
+                        <div>
+                            <h3 className="font-semibold text-text mb-2">¿Puedo personalizar los colores?</h3>
+                            <p className="text-text/70">Sí, puedes cambiar el color del QR y del fondo para que combine con tu diseño.</p>
+                        </div>
+                        <div>
+                            <h3 className="font-semibold text-text mb-2">¿Los códigos QR expiran?</h3>
+                            <p className="text-text/70">No, los códigos QR que generas son permanentes y funcionarán siempre.</p>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Additional Info */}
+                <section className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+                    <h2 className="text-3xl font-bold text-text mb-4">Crea Códigos QR Profesionales Online</h2>
+                    <div className="prose prose-sm max-w-none text-text/70 space-y-3">
+                        <p>
+                            Nuestro <strong>generador de códigos QR</strong> te permite <strong>crear código QR</strong> de forma rápida y profesional. Ya sea que necesites <strong>generar QR</strong> para tu negocio, evento o uso personal, nuestra herramienta gratuita te ofrece todas las opciones que necesitas.
+                        </p>
+                        <p>
+                            Con nuestro <strong>generador QR online</strong>, puedes <strong>crear QR</strong> para URLs, WiFi, texto, email y más. Es perfecto para negocios que quieren <strong>hacer código QR</strong> para menús digitales, tarjetas de presentación, o compartir información de contacto rápidamente.
+                        </p>
+                    </div>
+                </section>
+            </div>
         </div>
     );
 }

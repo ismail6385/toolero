@@ -67,7 +67,19 @@ import {
     faBed,
     faUserTag,
     faIcons,
-    faGraduationCap
+    faGraduationCap,
+    faFileWord,
+    faFileExcel,
+    faFileAlt,
+    faPenToSquare,
+    faCouch,
+    faPaintRoller,
+    faTv,
+    faTree,
+    faRuler,
+    faLayerGroup,
+    faCube,
+    faThLarge
 } from '@fortawesome/free-solid-svg-icons';
 
 export interface Tool {
@@ -739,6 +751,132 @@ export const toolsData: Category[] = [
                 description: 'Añade contraseña y encriptación a tus archivos PDF.',
                 href: '/tools/pdf/proteger-pdf',
                 icon: faLock
+            },
+            {
+                title: 'Dividir PDF',
+                description: 'Separa un PDF en páginas individuales gratis.',
+                href: '/tools/pdf/dividir-pdf',
+                icon: faFilePdf
+            },
+            {
+                title: 'Comprimir PDF',
+                description: 'Reduce el tamaño de tus archivos PDF sin perder calidad.',
+                href: '/tools/pdf/comprimir-pdf',
+                icon: faCompress
+            },
+            {
+                title: 'PDF a Word',
+                description: 'Convierte archivos PDF a documentos Word editables.',
+                href: '/tools/pdf/pdf-a-word',
+                icon: faFileWord
+            },
+            {
+                title: 'PDF a Excel',
+                description: 'Convierte tablas de PDF a hojas de cálculo Excel editables.',
+                href: '/tools/pdf/pdf-a-excel',
+                icon: faFileExcel
+            },
+            {
+                title: 'PDF a Texto',
+                description: 'Extrae el contenido de texto de tus archivos PDF.',
+                href: '/tools/pdf/pdf-a-texto',
+                icon: faFileAlt
+            }
+        ]
+    },
+    {
+        name: 'Muebles & Decoración',
+        slug: 'muebles',
+        icon: faCouch,
+        color: 'text-amber-600',
+        description: 'Calculadoras de medidas para muebles y distribución de hogar.',
+        tools: [
+            {
+                title: 'Tamaño Sofá',
+                description: '¿Cabe el sofá en tu salón? Calcúlalo aquí.',
+                href: '/tools/muebles/tamano-sofa',
+                icon: faCouch
+            },
+            {
+                title: 'Sofá Seccional',
+                description: 'Simulador 3D para sofás en L y Chaise Longue.',
+                href: '/tools/muebles/sofa-seccional',
+                icon: faCouch
+            },
+            {
+                title: 'Mesa de Centro',
+                description: 'Calcula el tamaño ideal de tu mesa de centro.',
+                href: '/tools/muebles/mesa-centro',
+                icon: faCouch
+            },
+            {
+                title: 'Mueble TV',
+                description: 'Distancia y altura ideal para tu televisor.',
+                href: '/tools/muebles/mueble-tv',
+                icon: faTv
+            },
+            {
+                title: 'Calculadora Pintura',
+                description: 'Cantidad de pintura necesaria para tu habitación.',
+                href: '/tools/muebles/calculadora-pintura',
+                icon: faPaintRoller
+            }
+        ]
+    },
+    {
+        name: 'Madera y Carpintería',
+        slug: 'madera',
+        icon: faTree,
+        color: 'text-amber-800',
+        description: 'Calculadoras de volumen, pies tablares y cortes para carpinteros.',
+        tools: [
+            {
+                title: 'Volumen Madera (m³ / ft³)',
+                description: 'Calcula el volumen de madera en rollos o aserrada.',
+                href: '/tools/madera/volumen-madera',
+                icon: faCube
+            },
+            {
+                title: 'Pies Tablares (Board Feet)',
+                description: 'Calculadora de pies tablares y precio de madera.',
+                href: '/tools/madera/pies-tablares',
+                icon: faRuler
+            },
+            {
+                title: 'Tableros MDF',
+                description: 'Calcula peso y optimización de hojas MDF.',
+                href: '/tools/madera/calculadora-mdf',
+                icon: faLayerGroup
+            },
+            {
+                title: 'Contrachapado (Plywood)',
+                description: 'Calculadora de hojas de triplay / plywood.',
+                href: '/tools/madera/calculadora-contrachapado',
+                icon: faLayerGroup
+            },
+            {
+                title: 'Tableros Melamina',
+                description: 'Estimación de material para muebles de melamina.',
+                href: '/tools/madera/calculadora-melamina',
+                icon: faThLarge
+            },
+            {
+                title: 'Aglomerado',
+                description: 'Calculadora para tableros de partículas.',
+                href: '/tools/madera/calculadora-aglomerado',
+                icon: faThLarge
+            },
+            {
+                title: 'Chapa de Madera',
+                description: 'Cálculo de láminas de enchape (Veneer).',
+                href: '/tools/madera/calculadora-chapado',
+                icon: faLayerGroup
+            },
+            {
+                title: 'Listones de Madera',
+                description: 'Calculadora de rastreles y vigas de madera.',
+                href: '/tools/madera/calculadora-listones',
+                icon: faRuler
             }
         ]
     }
