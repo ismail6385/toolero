@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLayerGroup, faThList, faGripLines } from '@fortawesome/free-solid-svg-icons';
+import { faLayerGroup, faThList, faGripLines, faRulerHorizontal } from '@fortawesome/free-solid-svg-icons';
 
 export default function DrawerSpacingClient() {
     // Inputs
