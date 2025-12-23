@@ -1,4 +1,3 @@
-
 import { Metadata } from 'next';
 import FaviconGeneratorClient from './FaviconGeneratorClient';
 
@@ -97,7 +96,7 @@ export default function FaviconGeneratorPage() {
                         <div>
                             <h3 className="font-semibold text-gray-800 mb-2">¿Cómo instalo el favicon en mi web?</h3>
                             <p className="text-gray-600">
-                                Sube el archivo `favicon.ico` a la raíz de tu sitio y añade la etiqueta `<link rel="icon" href="/favicon.ico" />` en la sección `<head>` de tu HTML.
+                                Sube el archivo favicon.ico a la raíz de tu sitio y añade la etiqueta &lt;link rel="icon" href="/favicon.ico" /&gt; en la sección &lt;head&gt; de tu HTML.
                             </p>
                         </div>
                     </div>

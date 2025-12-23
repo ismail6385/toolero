@@ -1,4 +1,3 @@
-
 import { Metadata } from 'next';
 import RoiCalculatorClient from './RoiCalculatorClient';
 
@@ -59,7 +58,7 @@ export default function RoiCalculatorPage() {
                         <ul className="space-y-3">
                             <li className="flex items-center gap-2">
                                 <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                                <span className="text-slate-700"><strong>ROI Positivo (>0%):</strong> La inversión es rentable. Has recuperado lo invertido y ganado más.</span>
+                                <span className="text-slate-700"><strong>ROI Positivo (&gt;0%):</strong> La inversión es rentable. Has recuperado lo invertido y ganado más.</span>
                             </li>
                             <li className="flex items-center gap-2">
                                 <div className="w-3 h-3 rounded-full bg-gray-400"></div>
@@ -67,7 +66,7 @@ export default function RoiCalculatorPage() {
                             </li>
                             <li className="flex items-center gap-2">
                                 <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                                <span className="text-slate-700"><strong>ROI Negativo (<0%):</strong> Estás perdiendo dinero. La inversión cuesta más de lo que genera.</span>
+                                <span className="text-slate-700"><strong>ROI Negativo (&lt;0%):</strong> Estás perdiendo dinero. La inversión cuesta más de lo que genera.</span>
                             </li>
                         </ul>
                     </div>
