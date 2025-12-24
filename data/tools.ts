@@ -607,7 +607,7 @@ export const toolsData: Category[] = [
             {
                 title: 'Schema Video',
                 description: 'Ayuda a Google a indexar tus videos correctamente.',
-                href: '/tools/seo-schema/video',
+                href: '/tools/seo-schema/video-object',
                 icon: faVideo
             },
             {

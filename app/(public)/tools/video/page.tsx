@@ -35,35 +35,12 @@ interface VideoTool {
 export default function VideoToolsPage() {
     const videoTools: VideoTool[] = [
         {
-            title: "Video a Audio (MP3)",
-            description: "Extrae el audio de tus archivos de video y descárgalo en formato MP3.",
-            href: "/tools/video/video-to-audio",
-            icon: faMusic,
-            featured: true,
-            category: "Conversión"
-        },
-        {
             title: "Calculadora Aspect Ratio",
             description: "Calcula las dimensiones y la relación de aspecto (16:9, 4:3, etc.) para tus proyectos.",
             href: "/tools/video/aspect-ratio",
             icon: faExpand,
             featured: true,
             category: "Cálculo"
-        },
-        {
-            title: "Recortador de Video",
-            description: "Recorta la duración de tus videos seleccionando el tiempo de inicio y fin.",
-            href: "/tools/video/trimmer",
-            icon: faCrop,
-            featured: true,
-            category: "Edición"
-        },
-        {
-            title: "Compresor de Video",
-            description: "Reduce el tamaño de tus videos sin perder calidad visible para compartir más rápido.",
-            href: "/tools/video/compressor",
-            icon: faCompress,
-            category: "Optimización"
         },
         {
             title: "Generador de Enlaces de Tiempo",

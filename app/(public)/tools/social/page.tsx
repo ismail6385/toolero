@@ -53,33 +53,11 @@ export default function SocialToolsPage() {
             category: "Personalización"
         },
         {
-            title: "Selector de Emojis",
-            description: "Busca y copia emojis fácilmente para tus publicaciones y mensajes.",
-            href: "/tools/social/emoji-picker",
-            icon: faSmile,
-            category: "Utilidades"
-        },
-        {
             title: "Extractor de Tags YouTube",
             description: "Extrae las etiquetas (tags) de cualquier video de YouTube para SEO.",
             href: "/tools/social/youtube-tags",
             icon: faVideo,
             category: "YouTube"
-        },
-        {
-            title: "Espaciador de Captions",
-            description: "Añade saltos de línea invisibles para formatear perfectamente tus posts de Instagram.",
-            href: "/tools/social/caption-spacer",
-            icon: faAlignLeft,
-            category: "Instagram"
-        },
-        {
-            title: "Image Resizer Social",
-            description: "Redimensiona imágenes a los tamaños exactos de Stories, Posts y Portadas.",
-            href: "/tools/social/image-resizer",
-            icon: faImage,
-            featured: true,
-            category: "Imágenes"
         }
     ];
 

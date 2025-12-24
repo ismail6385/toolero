@@ -55,16 +55,8 @@ export default function SeoToolsPage() {
         {
             title: "Generador Robots.txt",
             description: "Genera archivos robots.txt correctamente para controlar el rastreo de tu sitio web.",
-            href: "/tools/seo/robots-txt-generator",
+            href: "/tools/seo-schema/generador-robots",
             icon: faRobot,
-            category: "Técnico"
-        },
-        {
-            title: "Generador Sitemap XML",
-            description: "Convierte una lista de URLs en un sitemap XML válido para enviar a Google Search Console.",
-            href: "/tools/seo/sitemap-generator",
-            icon: faSitemap,
-            featured: true,
             category: "Técnico"
         },
         {
@@ -73,13 +65,6 @@ export default function SeoToolsPage() {
             href: "/tools/seo/slug-cleaner",
             icon: faLink,
             category: "Contenido"
-        },
-        {
-            title: "Densidad de Palabras Clave",
-            description: "Analiza la frecuencia y densidad de palabras clave en tu texto para optimización SEO.",
-            href: "/tools/seo/keyword-density",
-            icon: faChartBar,
-            category: "Análisis"
         }
     ];
 

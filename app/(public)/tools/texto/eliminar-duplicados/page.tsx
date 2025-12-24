@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 const relatedTools = [
     { name: 'Contador de Palabras', url: '/tools/texto/contador-palabras', icon: '📝' },
-    { name: 'Ordenar Lista', url: '/tools/texto/ordenar-lista', icon: '📊' }, // Assuming this exists or will exist, keeping generic if not
+    { name: 'Conversor Mayúsculas', url: '/tools/texto/conversor-mayusculas', icon: '🔠' },
     { name: 'Formateador JSON', url: '/tools/dev/json-formatter', icon: '💻' },
     { name: 'Extractor de Emails', url: '/tools/texto/extractor-emails', icon: '📧' },
 ];

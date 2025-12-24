@@ -26,10 +26,10 @@ export const metadata: Metadata = {
     title: 'Todas las Herramientas Gratuitas - Toolero.es',
     description: 'Más de 50 herramientas online gratuitas para mejorar tu productividad. Sin registro, 100% gratis.',
     type: 'website',
-    url: 'https://toolero.es/tools',
+    url: 'https://toolero.es',
   },
   alternates: {
-    canonical: 'https://toolero.es/tools',
+    canonical: 'https://toolero.es',
   },
 };
 
