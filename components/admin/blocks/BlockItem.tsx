@@ -4,7 +4,7 @@ import { useRef, useEffect, useState, useMemo, useCallback } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGripVertical, faTrash, faImage, faLightbulb, faLink, faListUl, faListOl, faQuoteRight, faCode, faMinus, faExternalLinkAlt, faVideo, faBold, faItalic, faInfoCircle, faExclamationTriangle, faBan, faCheckCircle, faThumbsUp, faThumbsDown } from '@fortawesome/free-solid-svg-icons';
+import { faGripVertical, faTrash, faImage, faLightbulb, faLink, faListUl, faListOl, faQuoteRight, faCode, faMinus, faExternalLinkAlt, faVideo, faBold, faItalic, faInfoCircle, faExclamationTriangle, faBan, faCheckCircle, faThumbsUp, faThumbsDown, faListAlt } from '@fortawesome/free-solid-svg-icons';
 import { BlockData } from '@/types/blog';
 import { LinkSuggester, SuggestionTool, LinkMatch } from '@/lib/linkSuggestions';
 import debounce from 'lodash.debounce';
@@ -528,6 +528,27 @@ function LinkCardBlock({ block, onChange }: any) {
 
 // ... (Existing LinkCardBlock)
 
+// ... (Existing LinkCardBlock)
+
+function TableOfContentsBlock() {
+    return (
+        <div className="my-8 p-6 bg-gray-50 border border-gray-200 rounded-xl">
+            <div className="flex items-center gap-2 mb-4 text-gray-500 font-bold uppercase tracking-wider text-xs border-b border-gray-200 pb-2">
+                <FontAwesomeIcon icon={faListAlt} /> Table of Contents
+            </div>
+            <div className="space-y-2 opacity-50">
+                <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+                <div className="h-4 bg-gray-200 rounded w-1/2 ml-4"></div>
+                <div className="h-4 bg-gray-200 rounded w-2/3"></div>
+                <div className="h-4 bg-gray-200 rounded w-1/2 ml-4"></div>
+            </div>
+            <div className="mt-4 text-center text-xs text-gray-400 italic">
+                (Will be auto-generated from headings on save)
+            </div>
+        </div>
+    );
+}
+
 function CalloutBlock({ block, onChange }: any) {
     const variant = block.variant || 'info';
 
@@ -693,8 +714,9 @@ export default function BlockItem({ block, onChange, onDelete, onEnter, listener
                 {block.type === 'link_card' && <LinkCardBlock block={block} onChange={onChange} />}
                 {block.type === 'callout' && <CalloutBlock block={block} onChange={onChange} />}
                 {block.type === 'pros_cons' && <ProsConsBlock block={block} onChange={onChange} />}
+                {block.type === 'toc' && <TableOfContentsBlock />}
 
-                {!['heading', 'paragraph', 'image', 'list', 'quote', 'code', 'divider', 'cta', 'video', 'link_card', 'callout', 'pros_cons'].includes(block.type) && (
+                {!['heading', 'paragraph', 'image', 'list', 'quote', 'code', 'divider', 'cta', 'video', 'link_card', 'callout', 'pros_cons', 'toc'].includes(block.type) && (
                     <div className="p-3 bg-gray-100 rounded text-gray-500 text-sm font-mono border border-gray-200">
                         Unknown block type: {block.type}
                     </div>

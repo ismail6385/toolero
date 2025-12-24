@@ -5,6 +5,8 @@ import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faInfoCircle, faExclamationTriangle, faBan, faCheckCircle, faThumbsUp, faThumbsDown, faLink, faExternalLinkAlt, faListAlt } from '@fortawesome/free-solid-svg-icons';
 
 interface Props {
     content: string | BlockData[];
@@ -176,17 +178,19 @@ export default function BlogRenderer({ content }: Props) {
                         const variant = block.variant || 'info';
                         const getStyles = () => {
                             switch (variant) {
-                                case 'info': return { bg: 'bg-blue-50', border: 'border-blue-200', text: 'text-blue-800', icon: 'ℹ️' };
-                                case 'warning': return { bg: 'bg-yellow-50', border: 'border-yellow-200', text: 'text-yellow-800', icon: '⚠️' };
-                                case 'error': return { bg: 'bg-red-50', border: 'border-red-200', text: 'text-red-800', icon: '🚫' };
-                                case 'success': return { bg: 'bg-green-50', border: 'border-green-200', text: 'text-green-800', icon: '✅' };
-                                default: return { bg: 'bg-blue-50', border: 'border-blue-200', text: 'text-blue-800', icon: 'ℹ️' };
+                                case 'info': return { bg: 'bg-blue-50', border: 'border-blue-200', text: 'text-blue-800', icon: faInfoCircle, iconColor: 'text-blue-500' };
+                                case 'warning': return { bg: 'bg-yellow-50', border: 'border-yellow-200', text: 'text-yellow-800', icon: faExclamationTriangle, iconColor: 'text-yellow-500' };
+                                case 'error': return { bg: 'bg-red-50', border: 'border-red-200', text: 'text-red-800', icon: faBan, iconColor: 'text-red-500' };
+                                case 'success': return { bg: 'bg-green-50', border: 'border-green-200', text: 'text-green-800', icon: faCheckCircle, iconColor: 'text-green-500' };
+                                default: return { bg: 'bg-blue-50', border: 'border-blue-200', text: 'text-blue-800', icon: faInfoCircle, iconColor: 'text-blue-500' };
                             }
                         };
                         const styles = getStyles();
                         return (
                             <div key={block.id} className={`my-8 p-6 rounded-xl border ${styles.bg} ${styles.border} flex gap-4`}>
-                                <div className="text-2xl mt-1">{styles.icon}</div>
+                                <div className={`text-2xl mt-1 ${styles.iconColor}`}>
+                                    <FontAwesomeIcon icon={styles.icon} />
+                                </div>
                                 <div className={`text-lg ${styles.text} leading-relaxed font-medium`}>
                                     {block.content}
                                 </div>
@@ -196,22 +200,26 @@ export default function BlogRenderer({ content }: Props) {
                         return (
                             <div key={block.id} className="my-10 grid grid-cols-1 md:grid-cols-2 gap-8">
                                 <div className="border border-green-200 bg-green-50/50 rounded-2xl p-6">
-                                    <h4 className="text-xl font-bold text-green-800 mb-4 flex items-center gap-2">👍 Pros</h4>
+                                    <h4 className="text-xl font-bold text-green-800 mb-4 flex items-center gap-2">
+                                        <FontAwesomeIcon icon={faThumbsUp} /> Pros
+                                    </h4>
                                     <ul className="space-y-3">
                                         {(block.pros || []).map((item, i) => (
                                             <li key={i} className="flex items-start gap-3 text-green-900">
-                                                <span className="text-green-500 mt-1 shrink-0">✔</span>
+                                                <span className="text-green-500 mt-1 shrink-0"><FontAwesomeIcon icon={faCheckCircle} /></span>
                                                 <span>{item}</span>
                                             </li>
                                         ))}
                                     </ul>
                                 </div>
                                 <div className="border border-red-200 bg-red-50/50 rounded-2xl p-6">
-                                    <h4 className="text-xl font-bold text-red-800 mb-4 flex items-center gap-2">👎 Cons</h4>
+                                    <h4 className="text-xl font-bold text-red-800 mb-4 flex items-center gap-2">
+                                        <FontAwesomeIcon icon={faThumbsDown} /> Cons
+                                    </h4>
                                     <ul className="space-y-3">
                                         {(block.cons || []).map((item, i) => (
                                             <li key={i} className="flex items-start gap-3 text-red-900">
-                                                <span className="text-red-500 mt-1 shrink-0">✖</span>
+                                                <span className="text-red-500 mt-1 shrink-0"><FontAwesomeIcon icon={faBan} /></span>
                                                 <span>{item}</span>
                                             </li>
                                         ))}
@@ -231,7 +239,7 @@ export default function BlogRenderer({ content }: Props) {
                                 <div className="border border-gray-200 rounded-xl p-6 hover:shadow-lg hover:border-blue-200 transition-all bg-white flex flex-col sm:flex-row gap-6 items-start sm:items-center">
                                     <div className="flex-1">
                                         <div className="text-xs font-bold text-blue-600 uppercase tracking-wider mb-2 flex items-center gap-2">
-                                            🔗 Recommended Resource
+                                            <FontAwesomeIcon icon={faLink} /> Recommended Resource
                                         </div>
                                         <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors mb-2">
                                             {block.title || 'Link Title'}
@@ -241,10 +249,37 @@ export default function BlogRenderer({ content }: Props) {
                                         </p>
                                     </div>
                                     <div className="shrink-0 bg-gray-50 p-3 rounded-full group-hover:bg-blue-50 transition-colors">
-                                        <svg className="w-6 h-6 text-gray-400 group-hover:text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                                        <FontAwesomeIcon icon={faExternalLinkAlt} className="text-gray-400 group-hover:text-blue-600 text-lg" />
                                     </div>
                                 </div>
                             </a>
+                        );
+                    case 'toc':
+                        // Filter headings from the full blocks array
+                        const headings = blocks.filter(b => b.type === 'heading');
+                        if (headings.length === 0) return null;
+
+                        return (
+                            <div key={block.id} className="my-10 bg-gray-50 border border-gray-200 rounded-xl p-6 md:p-8">
+                                <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-4 flex items-center gap-2 border-b border-gray-200 pb-2">
+                                    <FontAwesomeIcon icon={faListAlt} /> Table of Contents
+                                </h4>
+                                <nav>
+                                    <ul className="space-y-3 text-lg">
+                                        {headings.map((h) => {
+                                            const id = h.content?.toLowerCase().replace(/\s+/g, '-') || '';
+                                            const indent = h.level === 3 ? 'ml-6 border-l-2 border-gray-200 pl-4' : h.level === 4 ? 'ml-12' : ''; // Improved Indentation
+                                            return (
+                                                <li key={h.id} className={`${indent}`}>
+                                                    <a href={`#${id}`} className="text-gray-700 hover:text-blue-600 hover:underline transition-colors decoration-blue-200 underline-offset-4">
+                                                        {h.content}
+                                                    </a>
+                                                </li>
+                                            );
+                                        })}
+                                    </ul>
+                                </nav>
+                            </div>
                         );
                     default:
                         return null;

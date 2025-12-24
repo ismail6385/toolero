@@ -1,4 +1,4 @@
-export type BlockType = 'paragraph' | 'heading' | 'image' | 'list' | 'quote' | 'code' | 'divider' | 'cta' | 'video' | 'link_card' | 'callout' | 'pros_cons';
+export type BlockType = 'paragraph' | 'heading' | 'image' | 'list' | 'quote' | 'code' | 'divider' | 'cta' | 'video' | 'link_card' | 'callout' | 'pros_cons' | 'toc';
 
 export interface BlockData {
     id: string;

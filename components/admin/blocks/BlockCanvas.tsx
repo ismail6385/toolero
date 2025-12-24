@@ -5,7 +5,7 @@ import { arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSo
 import { BlockData, BlockType } from '@/types/blog';
 import BlockItem from './BlockItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faParagraph, faHeading, faImage, faListUl, faQuoteRight, faCode, faMinus, faExternalLinkAlt, faVideo, faLink, faInfoCircle, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faParagraph, faHeading, faImage, faListUl, faQuoteRight, faCode, faMinus, faExternalLinkAlt, faVideo, faLink, faInfoCircle, faThumbsUp, faListAlt } from '@fortawesome/free-solid-svg-icons';
 import { SuggestionTool } from '@/lib/linkSuggestions';
 
 interface Props {
@@ -105,11 +105,12 @@ export default function BlockCanvas({ blocks, onChange, uploadHandler, tools }: 
 
                     {/* External & Conversion */}
                     <div className="space-y-3">
-                        <h4 className="text-xs font-bold text-gray-400 pl-1 uppercase">🔗 Conversion</h4>
+                        <h4 className="text-xs font-bold text-gray-400 pl-1 uppercase">🔗 Conversion & Navigation</h4>
                         <div className="flex flex-wrap gap-2">
                             <AddButton icon={faLink} label="Link Card" onClick={() => addBlock(undefined, 'link_card')} />
                             <AddButton icon={faExternalLinkAlt} label="CTA Button" onClick={() => addBlock(undefined, 'cta')} />
                             <AddButton icon={faThumbsUp} label="Pros/Cons" onClick={() => addBlock(undefined, 'pros_cons')} />
+                            <AddButton icon={faListAlt} label="Table of Contents" onClick={() => addBlock(undefined, 'toc')} />
                         </div>
                     </div>
                 </div>
