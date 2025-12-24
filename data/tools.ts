@@ -79,7 +79,15 @@ import {
     faRuler,
     faLayerGroup,
     faCube,
-    faThLarge
+    faThLarge,
+    faBook,
+    faBookOpen,
+    faLightbulb,
+    faUserGraduate,
+    faPencilAlt,
+    faStickyNote,
+    faClipboardCheck,
+    faRandom
 } from '@fortawesome/free-solid-svg-icons';
 
 export interface Tool {
@@ -331,6 +339,24 @@ export const toolsData: Category[] = [
                 description: 'Crea firmas de correo profesionales gratis.',
                 href: '/tools/email/generador-firma',
                 icon: faEnvelope
+            },
+            {
+                title: 'Generador Link Mailto',
+                description: 'Crea enlaces de correo con asunto, CC y cuerpo predefinidos.',
+                href: '/tools/email/generador-mailto',
+                icon: faLink
+            },
+            {
+                title: 'Analizador Asuntos Email',
+                description: 'Evalúa la efectividad y longitud de tus asuntos.',
+                href: '/tools/email/analizador-asuntos',
+                icon: faCheckDouble
+            },
+            {
+                title: 'Obfuscador de Email',
+                description: 'Protege tu dirección de correo de los bots de spam.',
+                href: '/tools/email/obfuscador',
+                icon: faShieldAlt
             }
         ]
     },
@@ -877,6 +903,75 @@ export const toolsData: Category[] = [
                 description: 'Calculadora de rastreles y vigas de madera.',
                 href: '/tools/madera/calculadora-listones',
                 icon: faRuler
+            }
+        ]
+    },
+    {
+        name: 'Educación',
+        slug: 'educacion',
+        icon: faGraduationCap,
+        color: 'text-blue-600',
+        description: 'Herramientas educativas para estudiantes y profesores.',
+        tools: [
+            {
+                title: 'Calculadora de Tiempo de Estudio',
+                description: 'Calcula cuánto tiempo necesitas estudiar para alcanzar tus metas.',
+                href: '/tools/educacion/tiempo-estudio',
+                icon: faClock
+            },
+            {
+                title: 'Test de Estilo de Aprendizaje',
+                description: 'Descubre si eres aprendiz visual, auditivo o kinestésico.',
+                href: '/tools/educacion/estilo-aprendizaje',
+                icon: faLightbulb
+            },
+            {
+                title: 'Verificador de Nivel de Lectura',
+                description: 'Analiza la dificultad de un texto (fácil/medio/difícil).',
+                href: '/tools/educacion/nivel-lectura',
+                icon: faBook
+            },
+            {
+                title: 'Contador de Palabras y Tiempo de Lectura',
+                description: 'Calcula palabras, caracteres y tiempo estimado de lectura.',
+                href: '/tools/educacion/contador-palabras',
+                icon: faFileAlt
+            },
+            {
+                title: 'Calculadora de Promedio (GPA)',
+                description: 'Calcula tu promedio académico y GPA.',
+                href: '/tools/educacion/calculadora-gpa',
+                icon: faChartLine
+            },
+            {
+                title: 'Generador de Tarjetas de Estudio',
+                description: 'Crea flashcards imprimibles para memorizar.',
+                href: '/tools/educacion/generador-flashcards',
+                icon: faStickyNote
+            },
+            {
+                title: 'Creador de Quiz',
+                description: 'Genera cuestionarios personalizados con calificación.',
+                href: '/tools/educacion/creador-quiz',
+                icon: faClipboardCheck
+            },
+            {
+                title: 'Generador de Citas Bibliográficas',
+                description: 'Genera citas en formato APA, MLA y Chicago.',
+                href: '/tools/educacion/generador-citas',
+                icon: faQuoteRight
+            },
+            {
+                title: 'Conversor de Unidades',
+                description: 'Convierte entre sistema métrico e imperial.',
+                href: '/tools/educacion/conversor-unidades',
+                icon: faExchangeAlt
+            },
+            {
+                title: 'Calculadora de Fracciones y Porcentajes',
+                description: 'Resuelve operaciones con fracciones y porcentajes.',
+                href: '/tools/educacion/calculadora-fracciones',
+                icon: faPercentage
             }
         ]
     }

@@ -1,30 +1,14 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
+    const baseUrl = 'https://www.toolero.com'; // Replace with actual domain
+
     return {
-        rules: [
-            {
-                userAgent: '*',
-                allow: '/',
-                disallow: ['/api/', '/admin/'],
-            },
-            {
-                userAgent: 'Googlebot',
-                allow: '/',
-            },
-            {
-                userAgent: 'Googlebot-Image',
-                allow: '/',
-            },
-            {
-                userAgent: 'Bingbot',
-                allow: '/',
-            },
-            {
-                userAgent: 'Slurp',
-                allow: '/',
-            },
-        ],
-        sitemap: 'https://toolero.es/sitemap.xml',
+        rules: {
+            userAgent: '*',
+            allow: '/',
+            disallow: ['/private/', '/admin/', '/api/'],
+        },
+        sitemap: `${baseUrl}/sitemap.xml`,
     };
 }

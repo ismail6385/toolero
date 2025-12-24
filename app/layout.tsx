@@ -4,8 +4,8 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import OrganizationJsonLd from '@/components/seo/OrganizationJsonLd';
+import WebsiteJsonLd from '@/components/seo/WebsiteJsonLd';
 
 // Prevent Font Awesome from adding its own CSS automatically since we imported it above
 config.autoAddCss = false;
@@ -81,17 +81,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://toolero.es',
-    languages: {
-      'es-ES': 'https://toolero.es',
-    },
-  },
-  other: {
-    'apple-mobile-web-app-capable': 'yes',
-    'apple-mobile-web-app-status-bar-style': 'default',
-    'apple-mobile-web-app-title': 'Toolero.es',
-    'mobile-web-app-capable': 'yes',
-    'theme-color': '#7129cc',
-  },
+  }
 };
 
 export default function RootLayout({
@@ -100,13 +90,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es-ES" suppressHydrationWarning>
+    <html lang="es" suppressHydrationWarning>
       <body className={`${inter.className} min-h-screen flex flex-col bg-background`}>
-        <Navbar />
-        <main className="flex-grow">
-          {children}
-        </main>
-        <Footer />
+        <OrganizationJsonLd />
+        <WebsiteJsonLd />
+        {children}
       </body>
     </html>
   );

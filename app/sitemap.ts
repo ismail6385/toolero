@@ -2,67 +2,39 @@ import { MetadataRoute } from 'next';
 import { toolsData } from '@/data/tools';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://toolero.es';
+    const baseUrl = 'https://www.toolero.com';
 
-    const routes: MetadataRoute.Sitemap = [
-        {
-            url: baseUrl,
+    // 1. Static Pages
+    const staticPages = [
+        '',
+        '/about',
+        '/contact',
+        '/privacy',
+        '/terms',
+    ].map(route => ({
+        url: `${baseUrl}${route}`,
+        lastModified: new Date(),
+        changeFrequency: 'monthly' as const,
+        priority: route === '' ? 1.0 : 0.8,
+    }));
+
+    // 2. Category Pages
+    const categoryPages = toolsData.map(category => ({
+        url: `${baseUrl}/tools/${category.slug}`,
+        lastModified: new Date(),
+        changeFrequency: 'weekly' as const,
+        priority: 0.9,
+    }));
+
+    // 3. Tool Pages
+    const toolPages = toolsData.flatMap(category =>
+        category.tools.map(tool => ({
+            url: `${baseUrl}${tool.href}`,
             lastModified: new Date(),
-            changeFrequency: 'daily',
-            priority: 1,
-        },
-        {
-            url: `${baseUrl}/tools`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.9,
-        },
-        {
-            url: `${baseUrl}/categorias`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.8,
-        },
-        // Extra category sections that no vienen de toolsData
-        {
-            url: `${baseUrl}/tools/utilidad`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
+            changeFrequency: 'weekly' as const,
             priority: 0.7,
-        },
-        {
-            url: `${baseUrl}/tools/archivos`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.7,
-        },
-        {
-            url: `${baseUrl}/tools/calculo`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.7,
-        },
-    ];
+        }))
+    );
 
-    // Add all category pages
-    toolsData.forEach((category) => {
-        routes.push({
-            url: `${baseUrl}/tools/${category.slug}`,
-            lastModified: new Date(),
-            changeFrequency: 'weekly',
-            priority: 0.8,
-        });
-
-        // Add all tool pages
-        category.tools.forEach((tool) => {
-            routes.push({
-                url: `${baseUrl}${tool.href}`,
-                lastModified: new Date(),
-                changeFrequency: 'monthly',
-                priority: 0.7,
-            });
-        });
-    });
-
-    return routes;
+    return [...staticPages, ...categoryPages, ...toolPages];
 }

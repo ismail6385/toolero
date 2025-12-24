@@ -1,6 +1,7 @@
 
 import { Metadata } from 'next';
 import MergePdfClient from './MergePdfClient';
+import HelpfulGuides from '@/components/HelpfulGuides';
 
 export const metadata: Metadata = {
     title: 'Unir PDF Gratis Online - Combinar y Juntar Archivos PDF',
@@ -90,6 +91,9 @@ export default function MergePdfPage() {
                     </div>
                 </section>
             </article>
+
+            {/* Smart Internal Linking: Shows blogs that mention this tool */}
+            <HelpfulGuides toolSlug="unir-pdf" />
         </>
     );
 }
