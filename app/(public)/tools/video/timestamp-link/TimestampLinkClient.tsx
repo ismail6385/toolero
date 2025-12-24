@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { faLink, faCopy, faCheck, faYoutube } from '@fortawesome/free-solid-svg-icons';
+import { faLink, faCopy, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function TimestampLinkClient() {
@@ -130,8 +131,8 @@ export default function TimestampLinkClient() {
                         <button
                             onClick={copyToClipboard}
                             className={`px-6 py-4 rounded-lg font-bold transition-all ${copied
-                                    ? 'bg-green-500 text-white'
-                                    : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                                ? 'bg-green-500 text-white'
+                                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                                 }`}
                         >
                             <FontAwesomeIcon icon={copied ? faCheck : faCopy} />

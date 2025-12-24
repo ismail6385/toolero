@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { faYoutube, faSearch, faCopy, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faCopy, faCheck } from '@fortawesome/free-solid-svg-icons';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function YouTubeTagsClient() {
@@ -110,8 +111,8 @@ export default function YouTubeTagsClient() {
                         <button
                             onClick={copyTags}
                             className={`px-4 py-2 rounded-lg font-medium transition-all ${copied
-                                    ? 'bg-green-500 text-white'
-                                    : 'bg-red-100 text-red-700 hover:bg-red-200'
+                                ? 'bg-green-500 text-white'
+                                : 'bg-red-100 text-red-700 hover:bg-red-200'
                                 }`}
                         >
                             <FontAwesomeIcon icon={copied ? faCheck : faCopy} className="mr-2" />

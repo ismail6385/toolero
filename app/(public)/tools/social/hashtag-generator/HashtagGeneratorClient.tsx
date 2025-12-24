@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { faHashtag, faCopy, faCheck, faInstagram, faTiktok, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faHashtag as faHashtagSolid } from '@fortawesome/free-solid-svg-icons';
+import { faInstagram, faTiktok, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faHashtag, faCopy, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type Category = 'general' | 'fitness' | 'food' | 'travel' | 'fashion' | 'tech' | 'business';
@@ -55,7 +55,7 @@ export default function HashtagGeneratorClient() {
         <div className="max-w-4xl mx-auto p-6">
             <div className="text-center mb-10">
                 <div className="inline-block p-4 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 text-purple-600 mb-4 text-3xl">
-                    <FontAwesomeIcon icon={faHashtagSolid} />
+                    <FontAwesomeIcon icon={faHashtag} />
                 </div>
                 <h1 className="text-4xl font-bold text-gray-800 mb-2">Generador de Hashtags</h1>
                 <p className="text-gray-600">Aumenta el alcance de tus publicaciones con hashtags relevantes.</p>
@@ -107,8 +107,8 @@ export default function HashtagGeneratorClient() {
                         <button
                             onClick={copyHashtags}
                             className={`px-4 py-2 rounded-lg font-medium transition-all ${copied
-                                    ? 'bg-green-500 text-white'
-                                    : 'bg-purple-100 text-purple-700 hover:bg-purple-200'
+                                ? 'bg-green-500 text-white'
+                                : 'bg-purple-100 text-purple-700 hover:bg-purple-200'
                                 }`}
                         >
                             <FontAwesomeIcon icon={copied ? faCheck : faCopy} className="mr-2" />
