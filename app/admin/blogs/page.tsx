@@ -5,12 +5,14 @@ import Link from 'next/link';
 import { supabase } from '@/lib/supabaseClient';
 import { BlogPost } from '@/types/blog';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faEdit, faTrash, faEye, faList, faExclamationCircle, faCheckCircle, faLink } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faEdit, faTrash, faEye, faList, faExclamationCircle, faCheckCircle, faLink, faMagic } from '@fortawesome/free-solid-svg-icons';
 import { format } from 'date-fns';
+import AIImportModal from '@/components/admin/AIImportModal';
 
 export default function AdminBlogsPage() {
     const [blogs, setBlogs] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState(true);
+    const [isAIModalOpen, setIsAIModalOpen] = useState(false);
 
     const fetchBlogs = async () => {
         setLoading(true);
@@ -47,9 +49,17 @@ export default function AdminBlogsPage() {
                     <FontAwesomeIcon icon={faList} className="text-blue-600" />
                     All Blogs
                 </h1>
-                <Link href="/admin/blogs/new" className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 shadow-md flex items-center gap-2">
-                    <FontAwesomeIcon icon={faPlus} /> New Blog
-                </Link>
+                <div className="flex gap-3">
+                    <button
+                        onClick={() => setIsAIModalOpen(true)}
+                        className="bg-purple-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-purple-700 shadow-md flex items-center gap-2 transition-all"
+                    >
+                        <FontAwesomeIcon icon={faMagic} /> AI Assistant
+                    </button>
+                    <Link href="/admin/blogs/new" className="bg-blue-600 text-white px-6 py-2 rounded-lg font-bold hover:bg-blue-700 shadow-md flex items-center gap-2">
+                        <FontAwesomeIcon icon={faPlus} /> New Blog
+                    </Link>
+                </div>
             </div>
 
             <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
@@ -130,6 +140,13 @@ export default function AdminBlogsPage() {
                     </tbody>
                 </table>
             </div>
+
+            <AIImportModal
+                isOpen={isAIModalOpen}
+                onClose={() => setIsAIModalOpen(false)}
+                onSuccess={fetchBlogs}
+            />
         </div>
     );
 }
+
