@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import Link from 'next/link';
-import { supabase } from '@/lib/supabaseClient';
+import { createClient } from '@/lib/supabaseBrowser';
 import { BlogPost } from '@/types/blog';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEdit, faTrash, faEye, faList, faExclamationCircle, faCheckCircle, faLink, faMagic } from '@fortawesome/free-solid-svg-icons';
@@ -10,6 +10,7 @@ import { format } from 'date-fns';
 import AIImportModal from '@/components/admin/AIImportModal';
 
 export default function AdminBlogsPage() {
+    const supabase = useMemo(() => createClient(), []);
     const [blogs, setBlogs] = useState<BlogPost[]>([]);
     const [loading, setLoading] = useState(true);
     const [isAIModalOpen, setIsAIModalOpen] = useState(false);
