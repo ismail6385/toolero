@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faMagic, faCloudDownloadAlt, faCheckCircle, faSpinner, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faMagic, faCloudDownloadAlt, faCheckCircle, faSpinner, faExclamationTriangle, faUserLock } from '@fortawesome/free-solid-svg-icons';
 import { supabase } from '@/lib/supabaseClient';
 import aiBlogs from '@/data/ai_blogs.json';
 
@@ -17,15 +17,39 @@ export default function AIImportModal({ isOpen, onClose, onSuccess }: AIImportMo
     const [progress, setProgress] = useState(0);
     const [done, setDone] = useState(false);
     const [error, setError] = useState<string | null>(null);
+    const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+
+    // Check auth on open
+    useEffect(() => {
+        if (isOpen) {
+            const checkAuth = async () => {
+                const { data: { session } } = await supabase.auth.getSession();
+                console.log('Current Auth Session:', session ? 'Active' : 'Missing');
+                setIsAuthenticated(!!session);
+            };
+            checkAuth();
+        }
+    }, [isOpen]);
 
     if (!isOpen) return null;
 
     const handleImport = async () => {
         setImporting(true);
         setError(null);
-        setProgress(10);
+        setProgress(5);
 
         try {
+            // 1. Double check authentication
+            const { data: { session }, error: authError } = await supabase.auth.getSession();
+
+            if (authError || !session) {
+                console.error('Auth verification failed:', authError);
+                throw new Error('Aapka login session expire ho gaya hai. Please page refresh karke dobara login karein.');
+            }
+
+            setProgress(15);
+
+            // 2. Prepare data
             const blogEntries = aiBlogs.map(blog => ({
                 title: blog.title,
                 slug: blog.slug,
@@ -34,29 +58,37 @@ export default function AIImportModal({ isOpen, onClose, onSuccess }: AIImportMo
                 status: 'draft',
                 seo_title: blog.seo_title,
                 seo_description: blog.seo_description,
-                // These were missing in schema.sql, so we omit them to be safe
-                // tags: [],
-                // linked_tool_ids: [],
-                // internal_link_count: 0,
-                // is_orphan: true,
             }));
 
-            setProgress(40);
+            // 3. Try individual inserts to bypass potential batch RLS issues 
+            // and give granular feedback
+            let successCount = 0;
+            for (let i = 0; i < blogEntries.length; i++) {
+                const blog = blogEntries[i];
 
-            // Use upsert to handle cases where some slugs might already exist
-            // This prevents the whole batch from failing if one article exists
-            const { error: insertError } = await supabase
-                .from('blogs')
-                .upsert(blogEntries, { onConflict: 'slug' });
+                // Use upsert for each one
+                const { error: insertError } = await supabase
+                    .from('blogs')
+                    .upsert(blog, { onConflict: 'slug' });
 
-            if (insertError) {
-                console.error('Batch import error:', insertError);
-                throw new Error(insertError.message || 'Failed to insert blogs');
+                if (insertError) {
+                    console.error(`Error importing ${blog.slug}:`, insertError);
+                    // If one fails due to RLS, the whole thing might be an auth issue
+                    if (insertError.message.includes('row-level security')) {
+                        throw new Error('RLS Policy Error: Aapko database mein likhne ki ijazat nahi hai. Admin credentials check karein.');
+                    }
+                } else {
+                    successCount++;
+                }
+
+                setProgress(Math.round(15 + ((i + 1) / blogEntries.length) * 85));
             }
 
-            setProgress(100);
-            setDone(true);
+            if (successCount === 0) {
+                throw new Error('Koyi bhi blog import nahi ho saka. Database permissions check karein.');
+            }
 
+            setDone(true);
             setTimeout(() => {
                 onSuccess();
                 onClose();
@@ -86,6 +118,16 @@ export default function AIImportModal({ isOpen, onClose, onSuccess }: AIImportMo
                 </div>
 
                 <div className="p-8">
+                    {isAuthenticated === false && (
+                        <div className="mb-6 p-4 bg-red-50 border border-red-100 rounded-xl flex items-start gap-3">
+                            <FontAwesomeIcon icon={faUserLock} className="text-red-600 mt-1" />
+                            <div>
+                                <h4 className="text-red-900 font-bold text-sm">Authentication Issue</h4>
+                                <p className="text-red-700 text-xs mt-1">Aap logged in nahi dikh rahe hain. Please login page par ja kar dobara sign in karein.</p>
+                            </div>
+                        </div>
+                    )}
+
                     {!importing && !done ? (
                         <div className="space-y-6">
                             <div className="bg-purple-50 rounded-xl p-4 border border-purple-100">
@@ -115,7 +157,8 @@ export default function AIImportModal({ isOpen, onClose, onSuccess }: AIImportMo
 
                             <button
                                 onClick={handleImport}
-                                className="w-full bg-slate-900 text-white py-4 rounded-xl font-black text-lg shadow-xl shadow-slate-200 hover:bg-slate-800 transition-all flex items-center justify-center gap-3 group"
+                                disabled={isAuthenticated === false}
+                                className="w-full bg-slate-900 text-white py-4 rounded-xl font-black text-lg shadow-xl shadow-slate-200 hover:bg-slate-800 transition-all flex items-center justify-center gap-3 group disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 <FontAwesomeIcon icon={faCloudDownloadAlt} className="group-hover:translate-y-1 transition-transform" />
                                 Import All to Drafts
@@ -153,7 +196,7 @@ export default function AIImportModal({ isOpen, onClose, onSuccess }: AIImportMo
                                                 style={{ width: `${progress}%` }}
                                             ></div>
                                         </div>
-                                        <p className="text-xs text-gray-400 font-bold uppercase tracking-widest pt-2">Processing batch content safely</p>
+                                        <p className="text-xs text-gray-400 font-bold uppercase tracking-widest pt-2">Processing each article securely</p>
                                     </div>
                                 </div>
                             )}
