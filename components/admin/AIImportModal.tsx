@@ -23,48 +23,48 @@ export default function AIImportModal({ isOpen, onClose, onSuccess }: AIImportMo
     const handleImport = async () => {
         setImporting(true);
         setError(null);
-        let count = 0;
+        setProgress(10);
 
         try {
-            for (const blog of aiBlogs) {
-                // Prepare blog data
-                const blogData = {
-                    title: blog.title,
-                    slug: blog.slug,
-                    content: JSON.stringify(blog.content),
-                    excerpt: blog.excerpt,
-                    status: 'draft',
-                    seo_title: blog.seo_title,
-                    seo_description: blog.seo_description,
-                    created_at: new Date().toISOString(),
-                    updated_at: new Date().toISOString(),
-                    linked_tool_ids: [], // Logic to link tools could be added later
-                    internal_link_count: 0,
-                    is_orphan: true
-                };
+            const blogEntries = aiBlogs.map(blog => ({
+                title: blog.title,
+                slug: blog.slug,
+                content: JSON.stringify(blog.content),
+                excerpt: blog.excerpt,
+                status: 'draft',
+                seo_title: blog.seo_title,
+                seo_description: blog.seo_description,
+                // These were missing in schema.sql, so we omit them to be safe
+                // tags: [],
+                // linked_tool_ids: [],
+                // internal_link_count: 0,
+                // is_orphan: true,
+            }));
 
-                // Insert into Supabase
-                const { error: insertError } = await supabase.from('blogs').insert([blogData]);
+            setProgress(40);
 
-                if (insertError) {
-                    // If slug exists, we skip it or update it? Let's skip it if it's already there
-                    if (insertError.code !== '23505') { // 23505 is unique violation
-                        console.error('Error importing blog:', insertError);
-                    }
-                }
+            // Use upsert to handle cases where some slugs might already exist
+            // This prevents the whole batch from failing if one article exists
+            const { error: insertError } = await supabase
+                .from('blogs')
+                .upsert(blogEntries, { onConflict: 'slug' });
 
-                count++;
-                setProgress(Math.round((count / aiBlogs.length) * 100));
+            if (insertError) {
+                console.error('Batch import error:', insertError);
+                throw new Error(insertError.message || 'Failed to insert blogs');
             }
 
+            setProgress(100);
             setDone(true);
+
             setTimeout(() => {
                 onSuccess();
                 onClose();
-            }, 2000);
+            }, 1500);
+
         } catch (err: any) {
-            setError(err.message || 'An unexpected error occurred');
-        } finally {
+            console.error('Import process caught error:', err);
+            setError(err.message || 'An unexpected error occurred during import');
             setImporting(false);
         }
     };
