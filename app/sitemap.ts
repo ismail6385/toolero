@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { toolsData } from '@/data/tools';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://www.toolero.com';
+    const baseUrl = 'https://toolero.es';
 
     // 1. Static Pages
     const staticPages = [
