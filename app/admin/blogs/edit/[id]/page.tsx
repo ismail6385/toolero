@@ -1,12 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useParams } from 'next/navigation';
-import { supabase } from '@/lib/supabaseClient';
+import { createClient } from '@/lib/supabaseBrowser';
 import BlogEditor from '@/components/admin/BlogEditor';
 import { BlogPost } from '@/types/blog';
 
 export default function EditBlogPage() {
+    const supabase = useMemo(() => createClient(), []);
     const params = useParams();
     const id = params?.id as string;
     const [post, setPost] = useState<BlogPost | null>(null);

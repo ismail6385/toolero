@@ -128,7 +128,7 @@ export default function AdminBlogsPage() {
                                         <Link href={`/blog/${blog.slug}`} target="_blank" className="text-gray-400 hover:text-gray-600 p-2" title="View">
                                             <FontAwesomeIcon icon={faEye} />
                                         </Link>
-                                        <Link href={`/admin/blogs/${blog.slug}`} className="text-blue-500 hover:text-blue-700 p-2" title="Edit">
+                                        <Link href={`/admin/blogs/edit/${blog.id}`} className="text-blue-500 hover:text-blue-700 p-2" title="Edit">
                                             <FontAwesomeIcon icon={faEdit} />
                                         </Link>
                                         <button onClick={() => handleDelete(blog.id)} className="text-red-400 hover:text-red-600 p-2" title="Delete">
