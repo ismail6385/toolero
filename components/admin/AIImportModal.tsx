@@ -3,8 +3,10 @@
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faMagic, faCloudDownloadAlt, faCheckCircle, faSpinner, faExclamationTriangle, faUserLock } from '@fortawesome/free-solid-svg-icons';
-import { supabase } from '@/lib/supabaseClient';
+import { createClient } from '@/lib/supabaseBrowser';
 import aiBlogs from '@/data/ai_blogs.json';
+
+const supabase = createClient();
 
 interface AIImportModalProps {
     isOpen: boolean;
