@@ -5,10 +5,10 @@ export default function WebsiteJsonLd() {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
         name: 'Toolero',
-        url: 'https://www.toolero.com',
+        url: 'https://toolero.es',
         potentialAction: {
             '@type': 'SearchAction',
-            target: 'https://www.toolero.com/search?q={search_term_string}',
+            target: 'https://toolero.es/search?q={search_term_string}',
             'query-input': 'required name=search_term_string'
         }
     };

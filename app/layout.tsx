@@ -13,12 +13,12 @@ config.autoAddCss = false;
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://toolero.es'),
+  metadataBase: new URL('https://toolero.es/'),
   title: {
-    default: 'Toolero.es - Herramientas Gratuitas Online | 100% Gratis',
+    default: 'Toolero.es - Herramientas Gratuitas | 100% Gratis',
     template: '%s | Toolero.es'
   },
-  description: 'Descubre más de 50 herramientas online gratuitas: contador de palabras, edición de imágenes, generadores de contraseñas, herramientas SEO y más. Sin registro, 100% gratis.',
+  description: 'Descubre más de 50 herramientas online gratuitas: contador de palabras, edición de imágenes, SEO y más. Sin registro, 100% gratis.',
   keywords: [
     'herramientas online gratis',
     'contador de palabras',
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     'optimización imágenes',
     'herramientas de seguridad'
   ],
-  authors: [{ name: 'Toolero.es', url: 'https://toolero.es' }],
+  authors: [{ name: 'Toolero.es', url: 'https://toolero.es/' }],
   creator: 'Toolero.es',
   publisher: 'Toolero.es',
   formatDetection: {
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'es_ES',
-    url: 'https://toolero.es',
+    url: 'https://toolero.es/',
     siteName: 'Toolero.es',
     title: 'Toolero.es - Herramientas Gratuitas Online',
     description: 'Más de 50 herramientas online gratuitas para potenciar tu productividad. Sin registro, sin esperas.',

@@ -414,6 +414,12 @@ export const toolsData: Category[] = [
                 description: 'Encuentra el código JavaScript de cualquier tecla.',
                 href: '/tools/dev/keycode-info',
                 icon: faKeyboard
+            },
+            {
+                title: 'Decodificador JWT',
+                description: 'Lee y decodifica tokens JWT de forma segura.',
+                href: '/tools/dev/jwt-decoder',
+                icon: faLock
             }
         ]
     },

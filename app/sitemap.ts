@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         '/privacy',
         '/terms',
     ].map(route => ({
-        url: `${baseUrl}${route}`,
+        url: `${baseUrl}${route}/`,
         lastModified: new Date(),
         changeFrequency: 'monthly' as const,
         priority: route === '' ? 1.0 : 0.8,
@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // 2. Category Pages
     const categoryPages = toolsData.map(category => ({
-        url: `${baseUrl}/tools/${category.slug}`,
+        url: `${baseUrl}/tools/${category.slug}/`,
         lastModified: new Date(),
         changeFrequency: 'weekly' as const,
         priority: 0.9,
@@ -29,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // 3. Tool Pages
     const toolPages = toolsData.flatMap(category =>
         category.tools.map(tool => ({
-            url: `${baseUrl}${tool.href}`,
+            url: `${baseUrl}${tool.href}/`,
             lastModified: new Date(),
             changeFrequency: 'weekly' as const,
             priority: 0.7,

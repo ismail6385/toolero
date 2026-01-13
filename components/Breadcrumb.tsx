@@ -21,13 +21,13 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
         '@type': 'ListItem',
         position: 1,
         name: 'Inicio',
-        item: 'https://toolero.es',
+        item: 'https://toolero.es/',
       },
       ...items.map((item, index) => ({
         '@type': 'ListItem',
         position: index + 2,
         name: item.name,
-        item: `https://toolero.es${item.href}`,
+        item: `https://toolero.es${item.href}/`,
       })),
     ],
   };

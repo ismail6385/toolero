@@ -7,8 +7,8 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'Todas las Herramientas Gratuitas Online - Toolero.es',
-  description: 'Explora más de 50 herramientas online gratuitas: contador de palabras, redimensionar imágenes, generador de contraseñas, herramientas SEO, schema markup y más. 100% gratis, sin registro.',
+  title: 'Herramientas Gratuitas Online',
+  description: 'Más de 50 herramientas gratuitas: SEO, imágenes, texto, contraseñas y más. Sin registro, 100% gratis y fáciles de usar.',
   keywords: [
     'herramientas online gratis',
     'herramientas gratuitas',
@@ -23,13 +23,13 @@ export const metadata: Metadata = {
     'herramientas digitales'
   ],
   openGraph: {
-    title: 'Todas las Herramientas Gratuitas - Toolero.es',
-    description: 'Más de 50 herramientas online gratuitas para mejorar tu productividad. Sin registro, 100% gratis.',
+    title: 'Herramientas Gratuitas Online | Toolero.es',
+    description: 'Más de 50 herramientas gratuitas: SEO, imágenes, texto, contraseñas y más. Sin registro, 100% gratis.',
     type: 'website',
-    url: 'https://toolero.es',
+    url: 'https://toolero.es/',
   },
   alternates: {
-    canonical: 'https://toolero.es',
+    canonical: 'https://toolero.es/',
   },
 };
 
@@ -55,7 +55,7 @@ export default function ToolsPage() {
       position: index + 1,
       name: tool.title,
       description: tool.description,
-      url: `https://toolero.es${tool.href}`,
+      url: `https://toolero.es${tool.href}/`,
     })),
   };
 
@@ -65,7 +65,7 @@ export default function ToolsPage() {
     '@type': 'CollectionPage',
     name: 'Catálogo de Herramientas - Toolero.es',
     description: 'Explora nuestra colección completa de herramientas gratuitas online',
-    url: 'https://toolero.es/tools',
+    url: 'https://toolero.es/tools/',
     mainEntity: {
       '@type': 'ItemList',
       numberOfItems: allTools.length,

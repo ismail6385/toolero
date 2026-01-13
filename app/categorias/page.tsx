@@ -22,8 +22,8 @@ import {
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Categorías de Herramientas - Toolero.es | Text, SEO, Image, PDF & More',
-  description: 'Explora nuestras categorías de herramientas gratuitas: Herramientas de texto, SEO, imagen, PDF, utilidades, desarrollo, archivos y cálculo. Todo lo que necesitas en un solo lugar.',
+  title: 'Categorías de Herramientas Online',
+  description: 'Explora categorías de herramientas gratuitas: Texto, SEO, Imagen, PDF, Desarrollo y más. Todo lo que necesitas en un solo lugar.',
   keywords: [
     'categorías herramientas',
     'herramientas texto',
@@ -281,7 +281,7 @@ export default function CategoriasPage() {
                 Todas las Categorías
               </div>
               <h1 className="text-4xl md:text-6xl font-semibold text-text tracking-tight mb-6">
-                Explora por <span className="text-primary">Categoría</span>
+                Categorías de <span className="text-primary">Herramientas</span>
               </h1>
               <p className="mt-4 text-lg md:text-xl text-text/60 max-w-3xl mx-auto leading-relaxed">
                 Navega por nuestras herramientas organizadas por categorías. Encuentra exactamente lo que necesitas de forma rápida y sencilla.

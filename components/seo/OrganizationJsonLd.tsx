@@ -5,17 +5,17 @@ export default function OrganizationJsonLd() {
         '@context': 'https://schema.org',
         '@type': 'Organization',
         name: 'Toolero',
-        url: 'https://www.toolero.com',
-        logo: 'https://www.toolero.com/logo.png', // Placeholder
+        url: 'https://toolero.es',
+        logo: 'https://toolero.es/favicon.jpg',
         sameAs: [
-            'https://twitter.com/toolero',
-            'https://facebook.com/toolero'
+            'https://twitter.com/toolero_es',
+            'https://facebook.com/toolero.es'
         ],
         contactPoint: {
             '@type': 'ContactPoint',
             telephone: '',
             contactType: 'customer service',
-            email: 'contact@toolero.com'
+            email: 'contacto@toolero.es'
         }
     };
 
