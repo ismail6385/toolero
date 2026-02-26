@@ -35,20 +35,64 @@ const faqData: FAQItem[] = [
         answer: 'Sí, puedes usar todas nuestras herramientas para proyectos personales y comerciales sin restricciones. No hay limitaciones de uso comercial.'
     },
     {
-        question: '¿Cómo funciona el contador de palabras?',
-        answer: 'Nuestro contador de palabras analiza tu texto en tiempo real y proporciona estadísticas detalladas: número de palabras, caracteres (con y sin espacios), frases, párrafos y tiempo estimado de lectura.'
+        question: '¿Cómo genero un schema markup JSON-LD sin saber programar?',
+        answer: 'Toolero.es ofrece generadores visuales de schema markup: rellenas un formulario con los datos de tu negocio, artículo o producto, y la herramienta genera automáticamente el código JSON-LD listo para copiar y pegar en tu web. No necesitas ningún conocimiento técnico previo.'
     },
     {
-        question: '¿Puedo redimensionar imágenes sin perder calidad?',
-        answer: 'Sí, nuestra herramienta de redimensionamiento de imágenes utiliza algoritmos avanzados para mantener la mejor calidad posible. Puedes ajustar el tamaño y la compresión según tus necesidades.'
+        question: '¿Cuál es la mejor herramienta gratuita para convertir imágenes JPG a WebP sin instalar nada?',
+        answer: 'El Convertidor de Formatos de Toolero.es convierte imágenes entre JPG, PNG y WebP directamente en tu navegador, sin instalación ni registro. Es ideal para desarrolladores web y diseñadores que necesitan optimizar imágenes para la web de forma rápida y segura.'
     },
     {
-        question: '¿Qué es un generador de schema markup?',
-        answer: 'Un generador de schema markup crea código estructurado (JSON-LD) que ayuda a los motores de búsqueda a entender mejor tu contenido. Esto puede mejorar tu SEO y generar rich snippets en los resultados de búsqueda.'
+        question: '¿Cómo puedo unir varios PDFs en uno sin Adobe Acrobat?',
+        answer: 'Con la herramienta Unir PDF de Toolero.es puedes combinar múltiples archivos PDF en uno solo de forma completamente gratuita, sin instalar ningún programa y sin necesidad de tener Adobe Acrobat. El proceso ocurre íntegramente en tu navegador.'
     },
     {
-        question: '¿Las herramientas están disponibles en español?',
-        answer: 'Sí, todas nuestras herramientas están completamente en español, incluyendo la interfaz, descripciones y documentación. Estamos enfocados en el mercado hispanohablante.'
+        question: '¿Cuál es la diferencia entre HEX y RGB en colores CSS?',
+        answer: 'HEX (hexadecimal) usa una combinación alfanumérica de 6 dígitos (ej. #FF5733) y es el formato más usado en HTML/CSS. RGB define colores con valores del 0 al 255 para rojo, verde y azul (ej. rgb(255,87,51)). Puedes usar el conversor HEX a RGB de Toolero.es para transformar entre ambos formatos al instante.'
+    },
+    {
+        question: '¿Qué herramienta gratuita puedo usar para generar contraseñas seguras en España?',
+        answer: 'El Generador de Contraseñas de Toolero.es crea claves criptográficamente seguras directamente en tu navegador. Puedes personalizar la longitud (hasta 128 caracteres), incluir mayúsculas, minúsculas, números y símbolos especiales. Es gratuito, sin registro y tus contraseñas nunca se envían a ningún servidor.'
+    },
+    {
+        question: '¿Cómo calcular el IMC (Índice de Masa Corporal) online gratis?',
+        answer: 'La Calculadora de IMC de Toolero.es calcula tu Índice de Masa Corporal en segundos: introduce tu peso en kg y tu altura en cm, y obtendrás tu IMC con una interpretación clara (bajo peso, normal, sobrepeso u obesidad). Es completamente gratuita y funciona en cualquier navegador.'
+    },
+    {
+        question: '¿Existe alguna alternativa gratuita a herramientas de pago para generar schema markup de FAQs?',
+        answer: 'Sí. Toolero.es ofrece un generador de Schema FAQ completamente gratuito y sin suscripción. A diferencia de herramientas de pago, con Toolero puedes generar el JSON-LD para preguntas frecuentes de forma ilimitada, en español, sin crear cuenta y con soporte para todos los campos recomendados por Google.'
+    },
+    {
+        question: '¿Cómo comprimir un PDF sin perder calidad desde el móvil?',
+        answer: 'La herramienta Comprimir PDF de Toolero.es funciona directamente desde el navegador de tu móvil (Chrome, Safari). Sube tu PDF, elige el nivel de compresión y descarga el resultado. No necesitas instalar ninguna app y tus archivos no se suben a ningún servidor externo.'
+    },
+    {
+        question: '¿Qué es la técnica Pomodoro y cómo puedo usarla para estudiar?',
+        answer: 'La técnica Pomodoro es un método de gestión del tiempo que divide el trabajo en bloques de 25 minutos (llamados "pomodoros") seguidos de descansos cortos de 5 minutos. El Cronómetro Pomodoro de Toolero.es es una herramienta gratuita con alertas visuales y sonoras que te guía en cada ciclo, ideal para estudiantes y trabajadores remotos.'
+    },
+    {
+        question: '¿Cómo verificar la fortaleza de una contraseña sin que nadie la vea?',
+        answer: 'El Analizador de Contraseñas de Toolero.es evalúa la fortaleza de tu clave de forma 100% local: el análisis se realiza en tu navegador y la contraseña nunca sale de tu dispositivo. Analiza longitud, variedad de caracteres, patrones comunes y te da una puntuación de seguridad con recomendaciones específicas.'
+    },
+    {
+        question: '¿Cuál es la mejor herramienta gratuita para contar palabras en español?',
+        answer: 'El Contador de Palabras de Toolero.es ofrece estadísticas en tiempo real: conteo de palabras, caracteres (con y sin espacios), frases, párrafos y tiempo estimado de lectura. Es especialmente útil para redactores, periodistas y estudiantes hispanos que necesitan cumplir límites de palabras en trabajos académicos o artículos.'
+    },
+    {
+        question: '¿Cómo generar un código QR personalizado gratis sin marca de agua?',
+        answer: 'El Generador de Códigos QR de Toolero.es crea QRs personalizados completamente gratis y sin marca de agua. Puedes generar QR para URLs, textos, emails o números de teléfono, descargar la imagen en alta resolución y usarla en proyectos comerciales sin restricciones.'
+    },
+    {
+        question: '¿Qué herramientas gratuitas existen para diseñadores web en España en 2026?',
+        answer: 'Para diseñadores web en España y LATAM, Toolero.es ofrece: Generador de Paletas de Colores, Selector de Color desde imagen, Verificador de Contraste (accesibilidad WCAG), Conversor HEX a RGB, Generador de Gradientes CSS y Generador de Favicon. Todas gratuitas, sin instalar nada, en español.'
+    },
+    {
+        question: '¿Cómo calcular cuánta agua debo beber al día?',
+        answer: 'La Calculadora de Consumo de Agua de Toolero.es calcula tu hidratación diaria recomendada según tu peso corporal, nivel de actividad física y clima. Para una persona adulta de 70 kg con actividad moderada, la recomendación general es entre 2 y 2.5 litros diarios, pero la calculadora personaliza el resultado para tu caso específico.'
+    },
+    {
+        question: '¿Toolero.es tiene herramientas SEO gratuitas para autónomos y pequeños negocios?',
+        answer: 'Sí. La categoría de Schema SEO de Toolero.es está diseñada especialmente para autónomos y pequeñas empresas: generadores de Schema para Negocio Local (LocalBusiness), Artículos, Productos, Videos, Organizaciones y FAQs. Estas herramientas ayudan a mejorar la visibilidad en Google, Google Maps y en motores de IA como ChatGPT y Gemini.'
     },
     {
         question: '¿Puedo sugerir nuevas herramientas?',

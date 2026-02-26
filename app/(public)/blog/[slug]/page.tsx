@@ -40,23 +40,34 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 // 2. Generate Static Params for SSG
 export async function generateStaticParams() {
-    const { data: posts } = await supabase
-        .from('blogs')
-        .select('slug')
-        .eq('status', 'published');
+    try {
+        const { data: posts } = await supabase
+            .from('blogs')
+            .select('slug')
+            .eq('status', 'published');
 
-    return posts?.map((post) => ({
-        slug: post.slug,
-    })) || [];
+        return posts?.map((post) => ({
+            slug: post.slug,
+        })) || [];
+    } catch {
+        // Supabase unreachable at build time (e.g. project paused) — skip SSG
+        return [];
+    }
 }
 
 // 3. Page Component
 export default async function BlogPostPage({ params }: Props) {
-    const { data: rawPost } = await supabase
-        .from('blogs')
-        .select('*')
-        .eq('slug', params.slug)
-        .single();
+    let rawPost = null;
+    try {
+        const { data } = await supabase
+            .from('blogs')
+            .select('*')
+            .eq('slug', params.slug)
+            .single();
+        rawPost = data;
+    } catch {
+        notFound();
+    }
 
     if (!rawPost) {
         notFound();

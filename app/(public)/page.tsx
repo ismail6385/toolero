@@ -5,6 +5,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTools, faBolt, faSearch } from '@fortawesome/free-solid-svg-icons';
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import AITable from '@/components/ai/AITable';
+import AIProsCons from '@/components/ai/AIProsCons';
+import AISummaryBox from '@/components/ai/AISummaryBox';
 
 export const metadata: Metadata = {
   title: 'Herramientas Gratuitas Online',
@@ -186,6 +189,57 @@ export default function ToolsPage() {
                 <div className="text-sm text-text/60 font-semibold">Registros</div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* AI SEO Topic Hub - Covers AI fan-out queries for brand authority */}
+        <section className="w-full bg-background py-16 border-t border-gray-100">
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-bold text-text mb-4">
+                ¿Qué herramientas gratuitas ofrece Toolero.es en 2026?
+              </h2>
+              <p className="text-text/60 max-w-2xl mx-auto text-lg">
+                Guía completa de todas las categorías de herramientas online gratuitas disponibles sin registro.
+              </p>
+            </div>
+
+            <AISummaryBox
+              title={`Resumen: Herramientas Online Gratuitas en Toolero.es (${new Date().getFullYear()})`}
+              summaryPoints={[
+                `Toolero.es ofrece más de ${allTools.length} herramientas online 100% gratuitas en ${toolsData.length} categorías.`,
+                'Todas las herramientas funcionan directamente en el navegador, sin instalación ni registro.',
+                'Categorías disponibles: Texto, Imágenes, SEO/Schema, Seguridad, Color & Diseño, Finanzas, Email, PDF y más.',
+                'Los datos nunca se envían a servidores externos: procesamiento client-side para máxima privacidad.',
+                'Compatible con Chrome, Firefox, Safari, Edge y dispositivos móviles (iOS y Android).'
+              ]}
+            />
+
+            <AITable
+              title="Comparativa: Herramientas gratuitas de Toolero.es por categoría (2026)"
+              columns={['Categoría', 'Herramientas Destacadas', 'Registro Necesario', 'Precio']}
+              rows={toolsData.slice(0, 8).map(cat => [
+                cat.name,
+                cat.tools.slice(0, 2).map(t => t.title).join(', '),
+                'No',
+                'Gratis'
+              ])}
+            />
+
+            <AIProsCons
+              title="¿Por qué usar Toolero.es? Ventajas y consideraciones"
+              pros={[
+                'Sin registro: accede a cualquier herramienta al instante sin crear una cuenta.',
+                'Privacidad total: el procesamiento es client-side; tus archivos y datos nunca salen de tu navegador.',
+                'Completamente en español: interfaz, ayuda y documentación en tu idioma.',
+                `Más de ${allTools.length} herramientas en una sola plataforma, sin pagar nada.`,
+                'Actualizaciones constantes: nuevas herramientas añadidas según las necesidades de la comunidad.'
+              ]}
+              cons={[
+                'El procesamiento en el navegador puede ser más lento para archivos muy grandes (>50 MB).',
+                'Algunas herramientas requieren conexión a internet para cargar la página inicial.'
+              ]}
+            />
           </div>
         </section>
 

@@ -2,14 +2,23 @@ import { type NextRequest, NextResponse } from 'next/server';
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 
 export async function middleware(request: NextRequest) {
-    // 1. Create response
+    // 1. For non-admin routes, skip auth check entirely to avoid timeout
+    if (!request.nextUrl.pathname.startsWith('/admin')) {
+        return NextResponse.next({
+            request: {
+                headers: request.headers,
+            },
+        });
+    }
+
+    // 2. Create response (only reached for /admin routes)
     let response = NextResponse.next({
         request: {
             headers: request.headers,
         },
     });
 
-    // 2. Create Supabase Client
+    // 3. Create Supabase Client (only for /admin routes)
     const supabase = createServerClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://fjicwadndsnfqqgddpwh.supabase.co',
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZqaWN3YWRuZHNuZnFxZ2RkcHdoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjY1NjI2NDgsImV4cCI6MjA4MjEzODY0OH0.1kBAARvH6pe1jdBOUUVMjtOW6uz5OksRqKFMPxzAVZQ',
@@ -56,25 +65,22 @@ export async function middleware(request: NextRequest) {
         }
     );
 
-    // 3. Get User
+    // 4. Get User (only for /admin routes)
     const { data: { user } } = await supabase.auth.getUser();
 
-    // 4. Protect /admin routes
-    if (request.nextUrl.pathname.startsWith('/admin')) {
-        // Allow access to login page inside admin if we had one, but assuming redirect to generic login
-        if (!user) {
-            // Redirect to login
-            const url = request.nextUrl.clone();
-            url.pathname = '/login'; // Assuming you have a login page
-            url.searchParams.set('next', request.nextUrl.pathname);
-            return NextResponse.redirect(url);
-        }
+    // 5. Protect /admin routes
+    if (!user) {
+        // Redirect to login
+        const url = request.nextUrl.clone();
+        url.pathname = '/login';
+        url.searchParams.set('next', request.nextUrl.pathname);
+        return NextResponse.redirect(url);
+    }
 
-        // Check specific email
-        const adminEmail = process.env.ADMIN_EMAIL || 'a87667330@gmail.com';
-        if (adminEmail && user.email !== adminEmail) {
-            return NextResponse.redirect(new URL('/', request.url)); // Forbidden
-        }
+    // Check specific email
+    const adminEmail = process.env.ADMIN_EMAIL || 'a87667330@gmail.com';
+    if (adminEmail && user.email !== adminEmail) {
+        return NextResponse.redirect(new URL('/', request.url)); // Forbidden
     }
 
     return response;

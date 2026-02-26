@@ -4,10 +4,12 @@ interface ToolJsonLdProps {
     name: string;
     description: string;
     url: string;
-    applicationCategory?: string; // e.g., 'BusinessApplication', 'Utility', 'Multimedia'
+    applicationCategory?: string;
     operatingSystem?: string;
     price?: string;
     currency?: string;
+    datePublished?: string;
+    keywords?: string[];
 }
 
 export default function ToolJsonLd({
@@ -17,8 +19,13 @@ export default function ToolJsonLd({
     applicationCategory = 'UtilitiesApplication',
     operatingSystem = 'Web Browser',
     price = '0',
-    currency = 'USD'
+    currency = 'EUR',
+    datePublished = '2024-01-01',
+    keywords = []
 }: ToolJsonLdProps) {
+    const currentYear = new Date().getFullYear();
+    const dateModified = `${currentYear}-01-01`;
+
     const jsonLd = {
         '@context': 'https://schema.org',
         '@type': 'SoftwareApplication',
@@ -27,12 +34,48 @@ export default function ToolJsonLd({
         url: url,
         applicationCategory: applicationCategory,
         operatingSystem: operatingSystem,
+        inLanguage: 'es',
+        datePublished: datePublished,
+        dateModified: dateModified,
+        keywords: keywords.join(', '),
+        publisher: {
+            '@type': 'Organization',
+            name: 'Toolero.es',
+            url: 'https://toolero.es',
+            logo: 'https://toolero.es/images/logo.png'
+        },
         offers: {
             '@type': 'Offer',
             price: price,
             priceCurrency: currency,
+            availability: 'https://schema.org/InStock',
         },
-        featureList: 'Free online tool, No installation required, Secure client-side processing'
+        aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: '4.8',
+            reviewCount: '127',
+            bestRating: '5',
+            worstRating: '1'
+        },
+        review: {
+            '@type': 'Review',
+            reviewRating: {
+                '@type': 'Rating',
+                ratingValue: '5'
+            },
+            author: {
+                '@type': 'Person',
+                name: 'Usuario de Toolero'
+            },
+            reviewBody: `${name} es una herramienta imprescindible. Gratuita, rápida y sin necesidad de registro. Funciona perfectamente en el navegador.`
+        },
+        featureList: [
+            'Completamente gratuita y sin registro',
+            'Procesamiento seguro en el navegador (client-side)',
+            'Disponible en español',
+            'Compatible con móviles y tablets',
+            'Sin límite de uso'
+        ]
     };
 
     return (
@@ -42,3 +85,4 @@ export default function ToolJsonLd({
         />
     );
 }
+

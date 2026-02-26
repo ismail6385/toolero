@@ -15,15 +15,21 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogIndexPage() {
-    const { data: posts, error } = await supabase
-        .from('blogs')
-        .select('*')
-        .eq('status', 'published')
-        .order('published_at', { ascending: false });
+    let posts = null;
+    try {
+        const { data, error } = await supabase
+            .from('blogs')
+            .select('*')
+            .eq('status', 'published')
+            .order('published_at', { ascending: false });
 
-    if (error) {
-        console.error('Error fetching blogs:', error);
-        return <div className="text-center py-20 text-red-500">Error cargando el blog.</div>;
+        if (error) {
+            console.error('Error fetching blogs:', error);
+        } else {
+            posts = data;
+        }
+    } catch {
+        console.error('Supabase unreachable at build time — rendering empty blog list');
     }
 
     return (
